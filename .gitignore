@@ -7,35 +7,6 @@
 **/node_modules
 **/node
 **/yarn
-**/*.js.map
-**/*.js
-.node
-/node_modules/
-.gradle/
-.config/
-.cache/
-.npm/
-**/autogen/
-projects/appd/sample/src/assets/cartesian-heavy-poc/
-.storybook/documentation.json
-
-# IDEs and editors
-/.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-workspace.xml
-*.iml
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 
 # misc
 /.sass-cache
