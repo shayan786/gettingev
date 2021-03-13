@@ -1,0 +1,22 @@
+@value colors: '../../components/tokens/colors.css';
+@value spacing: '../../components/tokens/spacing.css';
+@value shadows: '../../components/tokens/shadows.css';
+@value motion: '../../components/tokens/motion.css';
+@value shadow-default from shadows;
+@value white, cloud-grey, matter-grey, anthracite-grey, siberian-grey, deep-space-grey, atmosphere-3, ice-blue, lilac-violet, dark-violet from colors;
+@value spacing-1x, spacing-2x, spacing-3x, spacing-4x, spacing-6x from spacing;
+@value duration-fast, duration-medium, easing-decelerate, easing-accelerate, easing-standard from motion;
+
+.container {
+	width:  100%;
+	height:  70vh;
+	color:  deep-space-grey;
+	display: flex;
+	flex-flow:  column nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.title {
+	margin-top: spacing-2x;
+}

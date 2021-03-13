@@ -1,0 +1,9 @@
+@value colors: '../tokens/colors.css';
+@value motion: '../tokens/motion.css';
+@value white, matter-grey, anthracite-grey from colors;
+@value duration-fast, duration-medium, easing-decelerate, easing-accelerate, easing-standard from motion;
+@value loader-duration: 1.2s;
+
+.dialogContent {
+  padding:  0 0 2rem 0 !important;
+}

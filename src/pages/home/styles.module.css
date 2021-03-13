@@ -1,0 +1,17 @@
+@value colors: '../../components/tokens/colors.css';
+@value spacing: '../../components/tokens/spacing.css';
+@value shadows: '../../components/tokens/shadows.css';
+@value white, cloud-grey, winter-grey, anthracite-grey, deep-space-grey from colors;
+@value spacing-2x, spacing-3x, spacing-4x, spacing-5x, spacing-6x from spacing;
+@value shadow-default from shadows;
+
+.cellLoading {
+	height:  1.2rem;
+	background-color:  cloud-grey;
+}
+
+.spinner {
+	position: relative;
+	top:  30%;
+	left:  50%;
+}

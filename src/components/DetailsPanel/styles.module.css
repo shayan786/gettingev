@@ -1,0 +1,30 @@
+@value colors: '../tokens/colors.css';
+@value spacing: '../tokens/spacing.css';
+@value white, matter-grey, anthracite-grey from colors;
+@value spacing-2x, spacing-3x, spacing-4x, spacing-5x, spacing-6x from spacing;
+
+.container {
+  position: absolute;
+  top: 122px;
+  right:  0;
+  width:  500px;
+  height:  87vh;
+}
+
+.header {
+  display: flex;
+  flex-flow:  row nowrap;
+  align-items: center;
+  padding:  1rem 1rem 1rem 1.4rem;
+  justify-content: space-between
+}
+
+.body {
+  display: flex;
+  flex-flow:  column nowrap;
+  padding:  1rem;
+}
+
+.image {
+  width:  100%;
+}

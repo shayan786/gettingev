@@ -1,0 +1,8 @@
+@value colors: '../../components/tokens/colors.css';
+@value spacing: '../../components/tokens/spacing.css';
+@value white, cloud-grey, winter-grey, anthracite-grey, matter-grey, deep-sky-blue, deep-space-grey from colors;
+@value spacing-1x, spacing-2x, spacing-3x, spacing-4x, spacing-5x, spacing-6x from spacing;
+
+.container {
+	padding:  1.4rem;
+}

@@ -1,0 +1,67 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+**/build
+**/build-debug
+**/dist
+**/node_modules
+**/node
+**/yarn
+**/*.js.map
+**/*.js
+.node
+/node_modules/
+.gradle/
+.config/
+.cache/
+.npm/
+**/autogen/
+projects/appd/sample/src/assets/cartesian-heavy-poc/
+.storybook/documentation.json
+
+# IDEs and editors
+/.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+workspace.xml
+*.iml
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+dist.tgz
+.teamcity/target
+.npmrc
+lerna-debug.log
+node
+yarn
+.storybook/tsconfig.json
+old-api/
+task-graph.log
+tasks.log
+TESTS-*
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Undo exclude
+!jest.config.js
+!service-worker.js

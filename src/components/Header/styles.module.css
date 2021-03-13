@@ -1,0 +1,23 @@
+@value colors: '../tokens/colors.css';
+@value spacing: '../tokens/spacing.css';
+@value shadows: '../tokens/shadows.css';
+@value white, cloud-grey, matter-grey, anthracite-grey, deep-space-grey, atmosphere-3, ice-blue, lilac-violet, dark-violet, after-burner from colors;
+@value spacing-1x, spacing-2x,  spacing-3x, spacing-4x, spacing-6x from spacing;
+@value shadow-default from shadows;
+
+.container {
+	width: 60px;
+	display:  flex;
+	flex-flow:  column nowrap;
+	align-items: center;
+	height:  100vh;
+	background:  rgba(0,0,0,0.8);
+}
+
+.item {
+	margin-top:  1.3rem;
+}
+
+.item svg {
+	fill:  #fff;
+}

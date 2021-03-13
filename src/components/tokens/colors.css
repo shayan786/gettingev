@@ -1,0 +1,84 @@
+@value ice-blue: #F6FBFF;
+@value rain-blue: #BEDFFF;
+@value deep-sky-blue: #006ff0;
+@value lilac-violet: #ECE9FF;
+@value periwinkle: #9D8EFF;
+@value electric-indigo: #7B66FF; /** @deprecated **/
+@value dark-violet: #5845DB;
+
+@value white: #ffffff;
+@value stardust-grey: #F8F9FA;
+@value cloud-grey: #F1F3F5;
+@value winter-grey: #DEE1E2;
+@value siberian-grey: #DBDFE2;
+@value matter-grey: #A2A6AB;
+@value anthracite-grey: #585E67;
+@value deep-space-grey: #19212B;
+
+@value signal-green: #00D270;
+@value signal-green-light: #E6FFF3;
+@value azure-light: #0076FF;
+@value azure-blue-light: #E6F1FF;
+@value torch-red: #F0213A;
+@value torch-red-light: #FEE9EB;
+@value saffron-yellow: #FFD00E;
+@value saffron-yellow-light: #FFFAE6;
+@value lava-orange: #FF7F32;
+@value lava-orange-light: #FFE8DB;
+@value ultra-violet: #840FA6;
+
+@value validation-red: #DF0D00;
+@value validation-orange: #FF7F32;
+@value validation-green: #1DA624;
+
+@value dynamic-ultra: #4E3E1B;
+@value iris: #241774;
+@value slow-dancer: #FDA7E0;
+@value lens-flare: #8E00CE;
+@value fusion: #FF212F;
+@value after-burner: #FF7F32;
+@value apollo: #FFD400;
+@value aurora: #00D180;
+@value code-blue: #47A83F;
+@value global-control: #B8BEC4;
+
+@value deep-space-1: #19212B;
+@value deep-space-2: #535960;
+@value deep-space-3: #8C9095;
+@value deep-space-4: #C5C7CA;
+
+@value atmosphere-1: #E4E7EC;
+@value atmosphere-2: #EBEDF1;
+@value atmosphere-3: #F1F3F5;
+@value atmosphere-4: #F8F9FA;
+
+@value chart-1: #5A4DAA;
+@value chart-2: #53ABFF;
+@value chart-3: #71DEC0;
+@value chart-4: #FFBF54;
+@value chart-5: #F7729A;
+@value chart-6: #907EFF;
+@value chart-7: #F8A0FF;
+@value chart-8: #00B582;
+@value chart-9: #FFE95F;
+@value chart-10: #BD8D78;
+@value chart-11: #A6A0CE;
+@value chart-12: #A9D4FF;
+@value chart-13: #B8EEDF;
+@value chart-14: #FFDFA9;
+@value chart-15: #FBB8CC;
+@value chart-16: #DED9FF;
+@value chart-17: #FBCFFF;
+@value chart-18: #7FDAC0;
+@value chart-19: #D2F0B8;
+@value chart-20: #DEC6BB;
+@value chart-21: #3B3270;
+@value chart-22: #458ED4;
+@value chart-23: #5DB89F;
+@value chart-24: #D49E45;
+@value chart-25: #CD5E80;
+@value chart-26: #6757D4;
+@value chart-27: #CE85D4;
+@value chart-28: #00966C;
+@value chart-29: #88BA5E;
+@value chart-30: #9B7462;

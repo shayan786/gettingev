@@ -1,0 +1,62 @@
+@value colors: './colors.css';
+@value white, anthracite-grey, deep-space-grey, deep-sky-blue from colors;
+
+.font-regular {
+	font-family: "Roboto";
+  font-weight: normal;
+}
+
+.font-medium {
+	font-family: "Roboto";
+  font-weight: 500;
+}
+
+.font-bold {
+	font-family: "Roboto";
+  font-weight: 700;
+}
+
+.body {
+  font-size: 13px !important;
+  color: deep-space-grey;
+}
+
+.body-white {
+	composes: body;
+	color:  white;
+}
+
+.subtitle {
+    composes: font-medium;
+    font-size: 16px;
+    color: deep-space-grey;
+}
+
+.navigation-button-selected {
+  composes: font-medium;
+  color:  deep-sky-blue;
+}
+
+.h1 {
+  composes: font-medium;
+  font-size: 28px;
+  color: deep-space-grey;
+}
+
+.h2 {
+  composes: font-regular;
+  font-size: 24px;
+  color: deep-space-grey;
+}
+
+.h3 {
+  composes: font-regular;
+  font-size: 22px;
+  color: deep-space-grey;
+}
+
+.h4 {
+  composes: font-medium;
+  font-size: 19px;
+  color: deep-space-grey;
+}

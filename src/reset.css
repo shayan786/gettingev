@@ -1,0 +1,150 @@
+@value colors: './components/tokens/colors.css';
+@value spacing: './components/tokens/spacing.css';
+@value white, anthracite-grey, cloud-grey from colors;
+@value spacing-4x, spacing-6x from spacing;
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  src: url('#{$font_base}roboto-v18-latin/roboto-v18-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Roboto'), local('Roboto-Regular'),
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+/* roboto-500 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url('#{$font_base}roboto-v18-latin/roboto-v18-latin-500.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-500.woff') format('woff'), /* Modern Browsers */
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-500.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+/* roboto-700 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url('#{$font_base}roboto-v18-latin/roboto-v18-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('#{$font_base}roboto-v18-latin/roboto-v18-latin-700.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: normal;
+  src: url('#{$font_base}source-code-pro-v8-latin/source-code-pro-v8-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Source Code Pro'), local('SourceCodePro-Regular'),
+       url('#{$font_base}source-code-pro-v8-latin/source-code-pro-v8-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('#{$font_base}source-code-pro-v8-latin/source-code-pro-v8-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('#{$font_base}source-code-pro-v8-latin/source-code-pro-v8-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('#{$font_base}source-code-pro-v8-latin/source-code-pro-v8-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('#{$font_base}source-code-pro-v8-latin/source-code-pro-v8-latin-regular.svg#SourceCodePro') format('svg'); /* Legacy iOS */
+}
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+	background: #fff;
+	font-family: 'Roboto';
+}
+
+a {
+  text-decoration: none;
+}
+
+.h1 {
+  font-weight: 700;
+  font-size: 28px;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 22px;
+}
+
+h4 {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+main {
+  width:  100%;
+  display: flex;
+  flex-flow:  row nowrap;
+}
+
+.container {
+  width: calc(100% - 60px);
+  /* min-height: 100%; */
+}
+
+// Table
+.MuiPaper-root {
+  background-color: none !important;
+}
+
+.MuiPaper-elevation2 {
+  box-shadow: none !important;
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>User_Avitar</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12.5,7.08333333 C12.5,5.70273333 11.3806,4.58333333 10,4.58333333 C8.6194,4.58333333 7.5,5.70273333 7.5,7.08333333 C7.5,8.46393333 8.6194,9.58333333 10,9.58333333 C11.3806,9.58333333 12.5,8.46393333 12.5,7.08333333 Z M14.1666667,7.08333333 C14.1666667,9.3844 12.3010667,11.25 10,11.25 C7.69893333,11.25 5.83333333,9.3844 5.83333333,7.08333333 C5.83333333,4.78226667 7.69893333,2.91666667 10,2.91666667 C12.3010667,2.91666667 14.1666667,4.78226667 14.1666667,7.08333333 Z M13.2408167,12.9166667 C15.1202917,12.9166667 16.6666667,14.4078583 16.6666667,16.25 L15,16.25 C15,15.34215 14.2131083,14.5833333 13.2408083,14.5833333 L6.75918333,14.5833333 C5.78689167,14.5833333 5,15.34215 5,16.25 L3.33333333,16.25 C3.33333333,14.4078583 4.87970833,12.9166667 6.75918333,12.9166667 L13.2408167,12.9166667 Z" id="path-1"></path>
+    </defs>
+    <g id="User_Avitar" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#D3CCFF" cx="14" cy="14" r="14"></circle>
+        <g id="location/eum" transform="translate(4.000000, 4.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#585E67" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <g id="product/dark-violet" mask="url(#mask-2)" fill="#5845DB" fill-rule="evenodd">
+                <rect id="Rectangle-21-Copy-15" x="0" y="0" width="20" height="20"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
