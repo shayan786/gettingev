@@ -8,22 +8,22 @@ echo "SSH to Instance"
 ssh root@$INSTANCE <<EOF1
 
 echo "Change directory"
-cd appd-research-poc/
+cd gettingev/
 
 echo "Pull from repo"
 git pull
 
 echo "Install any new packages"
-sudo npm i
+sudo yarn install
 
 echo "Building..."
-npm run build
+yarn build
 
 echo "Remove old dist"
-sudo rm -r /usr/share/nginx/appd-research-poc/*
+sudo rm -r /var/www/gettingev.com/html*
 
 echo "Copy to nginx dist path"
-sudo cp -r ./build/* /usr/share/nginx/appd-research-poc/
+sudo cp -r ./build/* /var/www/gettingev.com/html
 
 echo "Restarting nginx"
 sudo service nginx restart

@@ -1,3 +1,3 @@
 export const api = {
-	url: "http://192.241.200.73"
+	url: "http://gettingev.com/api"
 }
