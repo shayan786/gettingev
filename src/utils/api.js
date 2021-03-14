@@ -1,3 +1,3 @@
 export const api = {
-	url: "http://gettingev.com/api"
+	url: "https://gettingev.com/api"
 }
