@@ -6,6 +6,7 @@ import CompareDialog from '../../components/CompareDialog/CompareDialog.js';
 // import moment from 'moment';
 import Button from '@material-ui/core/Button';
 import { CarsContextConsumer } from '../../contexts/cars.js';
+import { logos } from '../../utils/logos.js';
 // import IconButton from '@material-ui/core/IconButton';
 import LinkIcon from '@material-ui/icons/Link';
 // import Link from '@material-ui/core/Link';
@@ -93,14 +94,14 @@ class HomePage extends Component {
             title="Getting EV"
             icons={tableIcons}
             columns={[
-              { title: "Year", field: "year" },
-              { title: "Manufacturer", field: "manufacturer" },
+              { title: "Year", field: "year", type: 'date'},
+              { title: "Manufacturer", field: 'manufacturer', render: rowData =>  <img className={s.car_logo} src={logos.find(l => l.name === rowData.manufacturer.toLowerCase()).url} />, align: 'center'},
               { title: "Model", field: "model" },
               { title: "Trim", field: "trim" },
               { title: "Drivetrain", field: "drivetrain" },
-              { title: "Range (mi)", field: "range" },
-              { title: "Battery (kwh)", field: "battery" },
-              { title: "Price ($)", field: "price", render: rowData => `$${rowData.price}` }
+              { title: "Range (mi)", field: "range", type: 'numeric' },
+              { title: "Battery (kwh)", field: "battery", type: 'numeric'},
+              { title: "Price ($)", field: "price", type: 'currency' }
             ]}
             data={cars}
             onRowClick={(e, rowData) => { this.setState({ showDetailsPanel: true, selectedRowData: rowData }) } }

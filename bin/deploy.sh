@@ -20,7 +20,7 @@ echo "Building..."
 yarn build
 
 echo "Remove old dist"
-sudo rm -r /var/www/gettingev.com/html*
+sudo rm -r /var/www/gettingev.com/html/*
 
 echo "Copy to nginx dist path"
 sudo cp -r ./build/* /var/www/gettingev.com/html
