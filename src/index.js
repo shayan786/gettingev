@@ -28,9 +28,9 @@ class App extends Component {
 
 		bodyEl.style.height = `${window.innerHeight}px`;
 
-		// window.onresize = (e) => {
-		// 	bodyEl.style.height = `${window.innerHeight}px`;
-		// }
+		window.onresize = (e) => {
+			bodyEl.style.height = `${window.innerHeight}px`;
+		}
 	}
 
   render() {
@@ -39,23 +39,21 @@ class App extends Component {
 	    	<NavigationContextProvider>
 		    	<CarsContextProvider>
 		    		<ReviewsContextProvider>
-			    		<main>
+			    		<main className="body" ref={this.bodyRef}>
 			    			<Header />
 								<div className="container">
-									<div className="body" ref={this.bodyRef}>
-										<Switch>
-											{
-												routes.map((route, key) => (
-													<Route
-														key={key}
-														path={route.path}
-														exact={route.exact}
-														component={route.component} />
-												))
-											}
-											<Route component={ErrorPage} />
-										</Switch>
-									</div>
+									<Switch>
+										{
+											routes.map((route, key) => (
+												<Route
+													key={key}
+													path={route.path}
+													exact={route.exact}
+													component={route.component} />
+											))
+										}
+										<Route component={ErrorPage} />
+									</Switch>
 								</div>
 							</main>
 						</ReviewsContextProvider>

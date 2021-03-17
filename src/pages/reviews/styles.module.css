@@ -6,3 +6,21 @@
 .container {
 	padding: 1.4rem;
 }
+
+.spinner {
+	position: absolute;
+	top:  30%;
+	left:  50%;
+}
+
+.reviewer {
+	display: flex;
+	flex-flow:  row nowrap;
+	align-items: center;
+}
+
+.reviewerLogo {
+	border-radius:  50%;
+	width:  26px;
+	margin-right:  0.8rem;
+}

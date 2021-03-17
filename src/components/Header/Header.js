@@ -6,7 +6,6 @@ import { NavigationContextConsumer } from '../../contexts/navigation.js';
 import * as cx from 'classnames';
 
 class Header extends Component {
-
   _renderHeader(items, onChangeLocation) {
     return (
       <header className={s.container}>

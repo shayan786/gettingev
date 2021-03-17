@@ -106,10 +106,11 @@ class HomePage extends Component {
                 filtering: false,
                 actionsColumnIndex: -1,
                 headerStyle: {
-                  backgroundColor: 'transparent'
+                  backgroundColor: 'white'
                 },
                 paging: false,
-                selection: true
+                selection: true,
+                maxBodyHeight: window.innerHeight - 60
               }
             }
             actions={[

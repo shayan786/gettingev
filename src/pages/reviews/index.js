@@ -24,6 +24,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { ReviewsContextConsumer } from '../../contexts/reviews.js';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import LinkIcon from '@material-ui/icons/Link';
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -66,6 +67,15 @@ class ReviewsPage extends Component {
     )
   }
 
+  _renderReviewer(rowData) {
+    return (
+      <div className={s.reviewer}>
+        <img src={`https://gettingev.com/api${rowData.reviewer.logo[0].formats.thumbnail.url}`} className={s.reviewerLogo} />
+        { rowData.reviewer.name }
+      </div>
+    )
+  }
+
   _renderTableBody(reviews, loading) {
     return loading
       ? <CircularProgress 
@@ -76,7 +86,7 @@ class ReviewsPage extends Component {
             icons={tableIcons}
             columns={[
               { title: "Type", field: "type"},
-              { title: "Reviewer", render: rowData => rowData.reviewer.name },
+              { title: "Reviewer", render: rowData => this._renderReviewer(rowData) },
               { title: "Car", render: rowData => rowData.cars.length > 0 ? `${rowData.cars[0].year} ${rowData.cars[0].manufacturer} ${rowData.cars[0].model}` : ""}
             ]}
             data={reviews}
@@ -85,11 +95,19 @@ class ReviewsPage extends Component {
                 filtering: false,
                 actionsColumnIndex: -1,
                 headerStyle: {
-                  backgroundColor: 'transparent'
+                  backgroundColor: 'white'
                 },
-                paging: false
+                paging: false,
+                maxBodyHeight: window.innerHeight - 60
               }
-            }>
+            }
+            actions={[
+              {
+                icon: () => <LinkIcon />,
+                tooltip: 'Open Review',
+                onClick: (e, data) => { window.open(data.url, '_blank') }
+              }
+            ]}>
           </MaterialTable>
         )
   }

@@ -13,15 +13,15 @@ const NAV_ITEMS = [
     active: true
   },
   {
-    title: "Charging Locations",
-    url: "/chargers",
-    icon: <EvStationOutlinedIcon />,
-    active: false
-  },
-  {
     title: "Reviews",
     url: "/reviews",
     icon: <RateReviewOutlinedIcon />,
+    active: false
+  },
+  {
+    title: "Charging Locations",
+    url: "/chargers",
+    icon: <EvStationOutlinedIcon />,
     active: false
   },
   {
