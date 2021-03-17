@@ -47,6 +47,15 @@ const tableIcons = {
 };
 
 class ReviewsPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showDetailsDialog: false,
+      selectedRowData: null
+    }
+  }
+
 	_renderError (error, acknowledgeError) {
     return (
       <Dialog
@@ -70,9 +79,31 @@ class ReviewsPage extends Component {
   _renderReviewer(rowData) {
     return (
       <div className={s.reviewer}>
-        <img src={`https://gettingev.com/api${rowData.reviewer.logo[0].formats.thumbnail.url}`} className={s.reviewerLogo} />
+        <img src={`https://gettingev.com/api${rowData.reviewer.logo[0].formats ? rowData.reviewer.logo[0].formats.thumbnail.url : rowData.reviewer.logo[0].url}`} className={s.reviewerLogo} />
         { rowData.reviewer.name }
       </div>
+    )
+  }
+
+  _renderDetailsDialog () {
+    const { showDetailsDialog, selectedRowData } = this.state;
+
+    return selectedRowData && (
+      <Dialog
+        open={showDetailsDialog}
+        onClose={() => { this.setState({ showDetailsDialog: false }) }}
+        maxWidth={'lg'}
+        fullWidth={true} >
+        <DialogTitle id="alert-dialog-title">{`${selectedRowData.cars[0].year} ${selectedRowData.cars[0].manufacturer} ${selectedRowData.cars[0].model} - ${selectedRowData.type} Review`}</DialogTitle>
+        <DialogContent className={s.dialogContent}>
+          <iframe width="100%" height="600" src={selectedRowData.url} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => { this.setState({ showDetailsDialog: false }) }} color="primary" autoFocus>
+            Done
+          </Button>
+        </DialogActions>
+      </Dialog>
     )
   }
 
@@ -90,6 +121,7 @@ class ReviewsPage extends Component {
               { title: "Car", render: rowData => rowData.cars.length > 0 ? `${rowData.cars[0].year} ${rowData.cars[0].manufacturer} ${rowData.cars[0].model}` : ""}
             ]}
             data={reviews}
+            onRowClick={(e, rowData) => { this.setState({ showDetailsDialog: true, selectedRowData: rowData }) } }
             options={
               {
                 filtering: false,
@@ -98,16 +130,9 @@ class ReviewsPage extends Component {
                   backgroundColor: 'white'
                 },
                 paging: false,
-                maxBodyHeight: window.innerHeight - 60
+                maxBodyHeight: window.innerHeight - 60,
               }
-            }
-            actions={[
-              {
-                icon: () => <LinkIcon />,
-                tooltip: 'Open Review',
-                onClick: (e, data) => { window.open(data.url, '_blank') }
-              }
-            ]}>
+            }>
           </MaterialTable>
         )
   }
@@ -120,6 +145,7 @@ class ReviewsPage extends Component {
             ({ reviews, loading, error, acknowledgeError }) => { return error.state ? this._renderError(error, acknowledgeError) : this._renderTableBody(reviews, loading) }
           }
         </ReviewsContextConsumer>
+        { this._renderDetailsDialog() }
       </div>
     )
   }

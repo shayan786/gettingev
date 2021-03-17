@@ -20,6 +20,10 @@ export const routes = [
 		component: ReviewsPage
 	},
 	{
+		path: "/reviews/:id",
+		component: ReviewsPage
+	},
+	{
 		path: "/about",
 		exact: true,
 		component: AboutPage
