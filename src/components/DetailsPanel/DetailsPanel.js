@@ -8,10 +8,6 @@ import Carousel from 'react-material-ui-carousel';
 import { api } from '../../utils/api.js';
 
 class DetailsPanel extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	_renderHeader (title, handleClose) {
 		return (
 			<div className={s.header}>

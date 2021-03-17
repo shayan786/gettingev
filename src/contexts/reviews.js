@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
 import { api } from '../utils/api.js';
 
-const ReviewersContext = React.createContext();
+const ReviewsContext = React.createContext();
 
-export class ReviewersContextProvider extends Component {
+export class ReviewsContextProvider extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			reviewers: [],
+			reviews: [],
 			loading: true,
 			error: { state: false, content: {} }
 		}
 	}
 
 	componentDidMount () {
-		this._getReviewers()
+		this._getReviews()
 	}
 
 	_acknowledgeError () {
 		this.setState({ error: { state: false }})
 	}
 
-	_getReviewers () {
-		fetch(`${api.url}/reviewers`, {
+	_getReviews () {
+		fetch(`${api.url}/reviews`, {
 			method: 'GET'
 	  }).then(response => {
 	    return response.json()
 	  }).then(data => {
-	  	this.setState({ reviewers: data, loading: false });
+	  	this.setState({ reviews: data, loading: false });
 	  }).catch(error => {
 	    this.setState({ error: { state: true, content: error } })
 	  }).finally(() => {
@@ -38,18 +38,18 @@ export class ReviewersContextProvider extends Component {
 
 	render() {
 		const { children } = this.props;
-		const { reviewers, loading, error } = this.state;
+		const { reviews, loading, error } = this.state;
 
 		return (
-			<ReviewersContext.Provider 
+			<ReviewsContext.Provider 
 				value={{
-					reviewers, loading, error,
+					reviews, loading, error,
 					acknowledgeError: () => { this._acknowledgeError() }
 				}}>
 				{ children }
-			</ReviewersContext.Provider>
+			</ReviewsContext.Provider>
 		);
 	}
 }
 
-export const ReviewersContextConsumer = ReviewersContext.Consumer;
+export const ReviewsContextConsumer = ReviewsContext.Consumer;

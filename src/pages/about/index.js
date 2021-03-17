@@ -10,15 +10,6 @@ import s from './styles.module.css';
 // import Spinner from '../../components/Spinner/Spinner';
 
 class AboutPage extends Component {
-	constructor(props) {
-		super(props);
-
-		// this.state = {
-		// 	loading: true,
-		// 	activeTab: 0
-		// }
-	}
-
   render() {
     return ( 
     	<div className={s.container}>

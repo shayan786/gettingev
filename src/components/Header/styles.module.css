@@ -15,7 +15,17 @@
 }
 
 .item {
-	margin-top:  1.3rem;
+	width:  100%;
+	text-align: center;
+	padding:  1rem 0;
+}
+
+.item.active {
+	background:  rgba(255,255,255,0.2);
+}
+
+.item img {
+	width: 32px;
 }
 
 .item svg {
