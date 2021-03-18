@@ -5,10 +5,11 @@
 
 .container {
   position: absolute;
-  top: 122px;
+  top: 121px;
   right:  0;
   width:  500px;
   height:  87vh;
+  overflow-y: auto;
 }
 
 .header {
@@ -25,6 +26,15 @@
   padding:  1rem;
 }
 
+.carousel {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
 .image {
-  width:  100%;
+  width:  70%;
+}
+
+.listItem {
+  justify-content: space-between !important;
 }
