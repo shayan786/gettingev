@@ -54,5 +54,13 @@ export const logos = [
 	{
 		name: 'fiat',
 		url: '/images/car_logos/fiat.svg'
+	},
+	{
+		name: 'polestar',
+		url: ''
+	},
+	{
+		name: 'volvo',
+		url: ''
 	}
 ];
