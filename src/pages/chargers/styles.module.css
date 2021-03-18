@@ -6,3 +6,19 @@
 .container {
 	padding:  1.4rem;
 }
+
+.cards {
+	display: flex;
+	flex-flow:  row;
+	justify-content: space-between;
+	margin-top:  2rem;
+}
+
+.card {
+	width: max(32%, 300px)
+}
+
+.image {
+	height:  120px;
+	background-size:  contain !important;
+}
