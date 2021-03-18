@@ -57,10 +57,14 @@ export const logos = [
 	},
 	{
 		name: 'polestar',
-		url: ''
+		url: '/images/car_logos/polestar.svg'
 	},
 	{
 		name: 'volvo',
-		url: ''
+		url: '/images/car_logos/volvo.svg'
+	},
+	{
+		name: 'mini',
+		url: '/images/car_logos/mini.svg'
 	}
 ];
