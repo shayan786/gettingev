@@ -25,6 +25,8 @@ import { ReviewsContextConsumer } from '../../contexts/reviews.js';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import LinkIcon from '@material-ui/icons/Link';
+import { api } from '../../utils/api.js';
+
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -53,6 +55,22 @@ class ReviewsPage extends Component {
     this.state = {
       showDetailsDialog: false,
       selectedRowData: null
+    }
+  }
+
+  componentDidMount () {
+    const { params } = this.props.match;
+
+    if (params.id) {
+      fetch(`${api.url}/reviews/${params.id}`, {
+        method: 'GET'
+      }).then(response => {
+        return response.json()
+      }).then(data => {
+        this.setState({ selectedRowData: data, showDetailsDialog: true });
+      }).catch(error => {
+        console.log(error)
+      })
     }
   }
 
@@ -131,6 +149,7 @@ class ReviewsPage extends Component {
                 },
                 paging: false,
                 maxBodyHeight: window.innerHeight - 60,
+                padding: 'dense'
               }
             }>
           </MaterialTable>

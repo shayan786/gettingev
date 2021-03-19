@@ -42,10 +42,10 @@ export class NavigationContextProvider extends Component {
   }
 
   componentDidMount() {
-    const path = window.location.pathname;
+    const path = window.location.pathname.split('/')[0];
     let primaryNavItem = this.state.items.find(i => i.url === path);
 
-    this._onChangeLocation(primaryNavItem);
+    // this._onChangeLocation(primaryNavItem);
   }
 
   _onChangeLocation(item) {

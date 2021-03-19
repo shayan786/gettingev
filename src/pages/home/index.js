@@ -81,6 +81,15 @@ class HomePage extends Component {
     )
   }
 
+  _getLookupObject (items) {
+    const uniqueItems = Array.from(new Set(items)).sort()
+
+    return uniqueItems.reduce(function(r, e) {
+              r[e] = e;
+              return r;
+            }, {});
+  }
+
   _renderTableBody(cars, loading) {
     return loading
       ? <CircularProgress 
@@ -90,27 +99,35 @@ class HomePage extends Component {
             title="Getting EV - Cars"
             icons={tableIcons}
             columns={[
-              { title: "Year", field: "year", type: 'date'},
-              { title: "Manufacturer", field: 'manufacturer', render: rowData =>  <img className={s.car_logo} src={logos.find(l => l.name === rowData.manufacturer.toLowerCase()).url} />, align: 'center'},
+              { title: "Year", field: "year", type: 'date', lookup: this._getLookupObject(cars.map(s => s.year))},
+              { title: "Manufacturer", 
+                field: 'manufacturer', 
+                render: rowData =>  <img className={s.car_logo} src={logos.find(l => l.name === rowData.manufacturer.toLowerCase()).url} />, 
+                align: 'center',
+                lookup: this._getLookupObject(cars.map(s => s.manufacturer))
+              },
               { title: "Model", field: "model" },
               { title: "Trim", field: "trim" },
-              { title: "Drivetrain", field: "drivetrain" },
-              { title: "Range (mi)", field: "range", type: 'numeric' },
-              { title: "Battery (kwh)", field: "battery", type: 'numeric'},
-              { title: "Price ($)", field: "price", type: 'currency' }
+              { title: "Drivetrain", field: "drivetrain", lookup: this._getLookupObject(cars.map(s => s.drivetrain)) },
+              { title: "Range (mi)", field: "range", type: 'numeric', filtering: false },
+              { title: "Battery (kwh)", field: "battery", type: 'numeric', filtering: false },
+              { title: "Accel. 0-60 (s)", field: "acceleration", type: 'numeric', filtering: false },
+              { title: "Curb Weight (lbs)", field: "weight_lbs", type: 'numeric', filtering: false },
+              { title: "Price ($)", field: "price", type: 'currency', filtering: false  }
             ]}
             data={cars}
             onRowClick={(e, rowData) => { this.setState({ showDetailsPanel: true, selectedRowData: rowData }) } }
             options={
               {
-                filtering: false,
+                filtering: true,
                 actionsColumnIndex: -1,
                 headerStyle: {
                   backgroundColor: 'white'
                 },
                 paging: false,
                 selection: true,
-                maxBodyHeight: window.innerHeight - 60
+                maxBodyHeight: window.innerHeight - 60,
+                padding: 'dense'
               }
             }
             actions={[
