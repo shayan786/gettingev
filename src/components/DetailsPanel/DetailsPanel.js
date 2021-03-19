@@ -12,6 +12,19 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
 
 class DetailsPanel extends Component {
+  constructor(props) {
+    super(props);
+
+    this.containerRef = React.createRef();
+  }
+
+  componentDidUpdate() {
+    const containerEl = this.containerRef.current;
+
+    if (containerEl)
+      containerEl.style.height = `${window.innerHeight - 121}px`;
+  }
+
 	_renderHeader (title, handleClose) {
 		return (
 			<div className={s.header}>
@@ -50,6 +63,10 @@ class DetailsPanel extends Component {
       {
         label: "Top Speed (mph)",
         value: car.top_speed
+      },
+      {
+        label: "Dimensions",
+        value: car.dimension
       }
     ];
 
@@ -68,7 +85,7 @@ class DetailsPanel extends Component {
                 {prop.label}
               </div>
               <div>
-                {prop.value}
+                {prop.value || '-'}
               </div>
             </ListItem>
           )
@@ -80,20 +97,16 @@ class DetailsPanel extends Component {
   _renderBattery (car) {
     const overallMap = [
       {
-        label: "Range (mi)",
-        value: car.range
-      },
-      {
-        label: "Battery (kw)",
+        label: "Size (kw)",
         value: car.battery
       },
       {
-        label: "0-60mph (s)",
-        value: car.acceleration
+        label: "Efficiency (w/hr)",
+        value: car.efficiency
       },
       {
-        label: "Top Speed (mph)",
-        value: car.top_speed
+        label: "Charging (kw)",
+        value: car.charging_kw
       }
     ];
 
@@ -112,7 +125,7 @@ class DetailsPanel extends Component {
                 {prop.label}
               </div>
               <div>
-                {prop.value}
+                {prop.value || '-'}
               </div>
             </ListItem>
           )
@@ -124,20 +137,16 @@ class DetailsPanel extends Component {
   _renderPower (car) {
     const overallMap = [
       {
-        label: "Range (mi)",
-        value: car.range
+        label: "Drivetrain",
+        value: car.drivetrain
       },
       {
-        label: "Battery (kw)",
-        value: car.battery
+        label: "Horsepower (hp)",
+        value: car.hp
       },
       {
-        label: "0-60mph (s)",
-        value: car.acceleration
-      },
-      {
-        label: "Top Speed (mph)",
-        value: car.top_speed
+        label: "Torque (ft-lbs)",
+        value: car.torque
       }
     ];
 
@@ -156,7 +165,7 @@ class DetailsPanel extends Component {
                 {prop.label}
               </div>
               <div>
-                {prop.value}
+                {prop.value || '-'}
               </div>
             </ListItem>
           )
@@ -168,20 +177,20 @@ class DetailsPanel extends Component {
   _renderBody (car) {
     const overallMap = [
       {
-        label: "Range (mi)",
-        value: car.range
+        label: "Cargo (cu. ft)",
+        value: car.cargo_ft3
       },
       {
-        label: "Battery (kw)",
-        value: car.battery
+        label: "Weight (lbs)",
+        value: car.weight_lbs
       },
       {
-        label: "0-60mph (s)",
-        value: car.acceleration
+        label: "Seating",
+        value: car.seating
       },
       {
-        label: "Top Speed (mph)",
-        value: car.top_speed
+        label: "Ground Clearance (in)",
+        value: car.ground_clearance
       }
     ];
 
@@ -200,7 +209,7 @@ class DetailsPanel extends Component {
                 {prop.label}
               </div>
               <div>
-                {prop.value}
+                {prop.value || '-'}
               </div>
             </ListItem>
           )
@@ -213,7 +222,7 @@ class DetailsPanel extends Component {
   	const { open, car, handleClose } = this.props;
 
     return open ? (
-    	<Paper className={s.container} elevation={3}>
+    	<Paper className={s.container} elevation={3} ref={this.containerRef}>
     		{ this._renderHeader(`${car.year} ${car.manufacturer} ${car.model} - ${car.trim}`, handleClose) }
     		<div className={s.body}>
     			{ this._renderCarousel(car) }
