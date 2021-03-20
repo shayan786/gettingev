@@ -10,6 +10,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
+import Tooltip from '@material-ui/core/Tooltip';
 
 class DetailsPanel extends Component {
   constructor(props) {
@@ -22,16 +23,18 @@ class DetailsPanel extends Component {
     const containerEl = this.containerRef.current;
 
     if (containerEl)
-      containerEl.style.height = `${window.innerHeight - 121}px`;
+      containerEl.style.height = `${window.innerHeight}px`;
   }
 
 	_renderHeader (title, handleClose) {
 		return (
 			<div className={s.header}>
 				<h3>{title}</h3>
-				<IconButton aria-label="delete" onClick={() => handleClose() }>
-          <CloseIcon fontSize="small" />
-        </IconButton>
+        <Tooltip title="Close" placement="bottom">
+  				<IconButton aria-label="delete" onClick={() => handleClose() }>
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
 			</div>
 		)
 	}

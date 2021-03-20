@@ -24,7 +24,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { ReviewsContextConsumer } from '../../contexts/reviews.js';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import LinkIcon from '@material-ui/icons/Link';
 import { api } from '../../utils/api.js';
 
 

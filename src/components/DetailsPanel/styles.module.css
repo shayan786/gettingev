@@ -4,8 +4,9 @@
 @value spacing-2x, spacing-3x, spacing-4x, spacing-5x, spacing-6x from spacing;
 
 .container {
+  z-index: 99;
   position: absolute;
-  top: 121px;
+  top: 0;
   right:  0;
   width:  500px;
   overflow-y: auto;
