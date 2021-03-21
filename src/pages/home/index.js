@@ -28,6 +28,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CompareIcon from '@material-ui/icons/Compare';
+import { api } from '../../utils/api.js';
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -61,6 +62,34 @@ class HomePage extends Component {
     }
   }
 
+  componentDidMount () {
+    const { params } = this.props.match;
+
+    if (params.id) {
+      fetch(`${api.url}/cars/${params.id}`, {
+        method: 'GET'
+      }).then(response => {
+        return response.json()
+      }).then(data => {
+        this.setState({ selectedRowData: data, showDetailsPanel: true });
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+    if (params.cars) {
+      fetch(`${api.url}/cars`, {
+        method: 'GET'
+      }).then(response => {
+        return response.json()
+      }).then(data => {
+        const filteredCars = data.filter(d => params.cars.split(',').map(c => parseInt(c)).includes(d.id))
+        this.setState({ compareCars: filteredCars, showCompareDialog: true });
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+  }
+
   _renderError (error, acknowledgeError) {
     return (
       <Dialog
@@ -91,6 +120,8 @@ class HomePage extends Component {
   }
 
   _renderTableBody(cars, loading) {
+    const { history } = this.props;
+
     return loading
       ? <CircularProgress 
          className={s.spinner} />
@@ -113,10 +144,11 @@ class HomePage extends Component {
               { title: "Battery (kwh)", field: "battery", type: 'numeric', filtering: false },
               { title: "Accel. 0-60 (s)", field: "acceleration", type: 'numeric', filtering: false },
               { title: "Curb Weight (lbs)", field: "weight_lbs", type: 'numeric', filtering: false },
+              { title: "Dimensions", field: "dimensions", filtering: false },
               { title: "Price ($)", field: "price", type: 'currency', filtering: false  }
             ]}
             data={cars}
-            onRowClick={(e, rowData) => { this.setState({ showDetailsPanel: true, selectedRowData: rowData }) } }
+            onRowClick={(e, rowData) => { this.setState({ showDetailsPanel: true, selectedRowData: rowData });  history.push(`/${rowData.id}`)} }
             options={
               {
                 filtering: true,
@@ -134,7 +166,7 @@ class HomePage extends Component {
               {
                 tooltip: 'Compare',
                 icon: () => <CompareIcon />,
-                onClick: (evt, data) => { this.setState({ showCompareDialog: true, compareCars: data }) }
+                onClick: (evt, data) => { this.setState({ showCompareDialog: true, compareCars: data }); history.push(`/compare/${data.map(c => c.id)}`)}
               }
             ]}>
           </MaterialTable>
@@ -142,15 +174,23 @@ class HomePage extends Component {
   }
 
   _closeDetailsPanel () {
+    const { history } = this.props;
+
     this.setState({
       showDetailsPanel: false
     })
+
+    history.push('/');
   }
 
   _closeCompareDialog () {
+    const { history } = this.props;
+
     this.setState({
       showCompareDialog: false
     })
+
+    history.push('/');
   }
 
   render() {

@@ -104,7 +104,7 @@ class DetailsPanel extends Component {
         value: car.battery
       },
       {
-        label: "Efficiency (w/hr)",
+        label: "Efficiency (Wh/km)",
         value: car.efficiency
       },
       {

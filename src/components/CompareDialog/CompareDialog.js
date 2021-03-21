@@ -21,6 +21,15 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+// import {
+//   Chart,
+//   ArgumentAxis,
+//   ValueAxis,
+//   BarSeries,
+//   Title,
+//   Legend,
+// } from '@devexpress/dx-react-chart-material-ui';
+// import { Stack, Animation } from '@devexpress/dx-react-chart';
 
 const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -45,7 +54,7 @@ const tableIcons = {
 class CompareDialog extends Component {
 	_renderContent (cars) {
 		return cars ? (
-			<MaterialTable
+      <MaterialTable
         icons={tableIcons}
         columns={[
           { title: "Year", field: "year" },
@@ -55,6 +64,14 @@ class CompareDialog extends Component {
           { title: "Drivetrain", field: "drivetrain" },
           { title: "Range (mi)", field: "range", type: 'numeric' },
           { title: "Battery (kwh)", field: "battery", type: 'numeric' },
+          { title: "Accel. 0-60 (s)", field: "acceleration", type: 'numeric'},
+          { title: "HP", field: "hp", type: 'numeric'},
+          { title: "Torque (ft-lbs)", field: "torque", type: 'numeric'},
+          { title: "Top Speed (mph)", field: "top_speed", type: 'numeric'},
+          { title: "Efficiency (Wh/km)", field: "efficiency", type: 'numeric'},
+          { title: "Curb Weight (lbs)", field: "weight_lbs", type: 'numeric'},
+          { title: "Drag Coefficient", field: "drag_coefficient", type: 'numeric'},
+          { title: "Dimensions", field: "dimensions"},
           { title: "Price ($)", field: "price", render: rowData => `$${rowData.price}`, type: 'currency' }
         ]}
         data={cars}

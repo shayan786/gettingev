@@ -21,11 +21,22 @@ export const routes = [
 	},
 	{
 		path: "/reviews/:id",
+		exact: true,
 		component: ReviewsPage
 	},
 	{
 		path: "/about",
 		exact: true,
 		component: AboutPage
+	},
+	{
+		path: "/:id",
+		exact: true,
+		component: HomePage
+	},
+	{
+		path: "/compare/:cars",
+		exact: true,
+		component: HomePage
 	}
 ];

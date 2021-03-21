@@ -5,15 +5,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './reset.css';
 import { routes } from './routes.js';
 import { NavigationContextProvider } from './contexts/navigation.js';
-// import { ThemeContextProvider } from './contexts/theme.js';
-// import { UserContextProvider } from './contexts/user.js';
-// import { GlobalFilterContextProvider } from './contexts/globalFilter.js';
-// import LeftNav from './components/LeftNav/LeftNav';
 import { CarsContextProvider } from './contexts/cars.js';
 import { ReviewsContextProvider } from './contexts/reviews.js';
 import Header from './components/Header/Header';
-// import PageTitle from './components/PageTitle/PageTitle';
-// import NotificationsPanel from './components/NotificationsPanel/NotificationsPanel';
 import ErrorPage from './pages/error/index.js';
 
 class App extends Component {

@@ -104,6 +104,7 @@ class ReviewsPage extends Component {
 
   _renderDetailsDialog () {
     const { showDetailsDialog, selectedRowData } = this.state;
+    const { history } = this.props;
 
     return selectedRowData && (
       <Dialog
@@ -116,7 +117,7 @@ class ReviewsPage extends Component {
           <iframe width="100%" height="600" src={selectedRowData.url} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => { this.setState({ showDetailsDialog: false }) }} color="primary" autoFocus>
+          <Button onClick={() => { this.setState({ showDetailsDialog: false }); history.push('/reviews') }} color="primary" autoFocus>
             Done
           </Button>
         </DialogActions>
@@ -125,6 +126,8 @@ class ReviewsPage extends Component {
   }
 
   _renderTableBody(reviews, loading) {
+    const { history } = this.props;
+
     return loading
       ? <CircularProgress 
          className={s.spinner} />
@@ -138,7 +141,7 @@ class ReviewsPage extends Component {
               { title: "Car", render: rowData => rowData.cars.length > 0 ? `${rowData.cars[0].year} ${rowData.cars[0].manufacturer} ${rowData.cars[0].model}` : ""}
             ]}
             data={reviews}
-            onRowClick={(e, rowData) => { this.setState({ showDetailsDialog: true, selectedRowData: rowData }) } }
+            onRowClick={(e, rowData) => { this.setState({ showDetailsDialog: true, selectedRowData: rowData }); history.push(`/reviews/${rowData.id}`)} }
             options={
               {
                 filtering: false,
