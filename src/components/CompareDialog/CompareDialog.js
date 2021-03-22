@@ -72,7 +72,7 @@ class CompareDialog extends Component {
           { title: "Curb Weight (lbs)", field: "weight_lbs", type: 'numeric'},
           { title: "Drag Coefficient", field: "drag_coefficient", type: 'numeric'},
           { title: "Dimensions", field: "dimensions"},
-          { title: "Price ($)", field: "price", render: rowData => `$${rowData.price}`, type: 'currency' }
+          { title: "Price ($)", field: "price", render: rowData => `$${rowData.price}`, type: 'currency', customSort: (a, b) =>  a.price - b.price }
         ]}
         data={cars}
         options={

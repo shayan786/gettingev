@@ -145,7 +145,7 @@ class HomePage extends Component {
               { title: "Accel. 0-60 (s)", field: "acceleration", type: 'numeric', filtering: false },
               { title: "Curb Weight (lbs)", field: "weight_lbs", type: 'numeric', filtering: false },
               { title: "Dimensions", field: "dimensions", filtering: false },
-              { title: "Price ($)", field: "price", type: 'currency', filtering: false  }
+              { title: "Price ($)", field: "price", type: 'currency', filtering: false, customSort: (a, b) =>  a.price - b.price }
             ]}
             data={cars}
             onRowClick={(e, rowData) => { this.setState({ showDetailsPanel: true, selectedRowData: rowData });  history.push(`/${rowData.id}`)} }
