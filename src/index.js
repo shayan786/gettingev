@@ -18,7 +18,13 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		
+		const bodyEl = this.bodyRef.current;
+
+		bodyEl.style.height = `${window.innerHeight}px`;
+
+		window.onresize = (e) => {
+			bodyEl.style.height = `${window.innerHeight}px`;
+		}
 	}
 
   render() {
