@@ -70,7 +70,7 @@ class DetailsPanel extends Component {
       },
       {
         label: "Dimensions",
-        value: car.dimension
+        value: car.dimensions
       }
     ];
 
