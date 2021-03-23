@@ -89,7 +89,7 @@ class DetailsPanel extends Component {
                 {prop.label}
               </div>
               <div>
-                {prop.value || '-'}
+                {prop.value ? prop.value : '-'}
               </div>
             </ListItem>
           )
@@ -110,7 +110,7 @@ class DetailsPanel extends Component {
       },
       {
         label: "Charging (kw)",
-        value: car.charging_kw
+        value: car.charging_kW
       }
     ];
 
@@ -129,7 +129,7 @@ class DetailsPanel extends Component {
                 {prop.label}
               </div>
               <div>
-                {prop.value || '-'}
+                {prop.value ? prop.value : '-'}
               </div>
             </ListItem>
           )
@@ -169,7 +169,7 @@ class DetailsPanel extends Component {
                 {prop.label}
               </div>
               <div>
-                {prop.value || '-'}
+                {prop.value ? prop.value : '-'}
               </div>
             </ListItem>
           )
@@ -213,7 +213,7 @@ class DetailsPanel extends Component {
                 {prop.label}
               </div>
               <div>
-                {prop.value || '-'}
+                {prop.value ? prop.value : '-'}
               </div>
             </ListItem>
           )
