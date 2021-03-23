@@ -11,6 +11,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
 import Tooltip from '@material-ui/core/Tooltip';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
 class DetailsPanel extends Component {
   constructor(props) {
@@ -221,6 +222,37 @@ class DetailsPanel extends Component {
     )
   }
 
+  _renderReviews (car) {
+    return car.reviews.length > 0 ? (
+      <List
+        className={s.overall}
+        subheader={
+          <ListSubheader disableSticky={true}>
+            Reviews
+          </ListSubheader>
+        }>
+        {
+          car.reviews.map((review, i) => 
+            <ListItem className={s.listItem} key={i}>
+              <div>
+                {`${review.type}`}
+              </div>
+              <div>
+                <Tooltip title="Open review" placement="bottom">
+                  <a href={review.url} target="_blank">
+                    <IconButton aria-label="Open review">
+                      <ExitToAppOutlinedIcon fontSize="small" />
+                    </IconButton>
+                  </a>
+                </Tooltip>
+              </div>
+            </ListItem>
+          )
+        }
+      </List>
+    ) : null
+  }
+
   render() {
   	const { open, car, handleClose } = this.props;
 
@@ -236,6 +268,8 @@ class DetailsPanel extends Component {
           { this._renderPower(car) }
           <Divider />
           { this._renderBody(car) }
+          <Divider />
+          { this._renderReviews(car) }
     		</div>
     	</Paper>
     ) : null

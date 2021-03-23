@@ -22,3 +22,14 @@
 	height:  120px;
 	background-size:  contain !important;
 }
+
+@media only screen and (max-width: 768px) {
+  .cards {
+    flex-flow:  column;
+    margin-top: 0;
+  }
+
+  .card {
+  	margin-top:  2rem;
+  }
+}

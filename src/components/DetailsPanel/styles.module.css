@@ -38,3 +38,9 @@
 .listItem {
   justify-content: space-between !important;
 }
+
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}

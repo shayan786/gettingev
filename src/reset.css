@@ -140,6 +140,17 @@ main {
   /* min-height: 100%; */
 }
 
+@media only screen and (max-width: 768px) {
+  main {
+    flex-flow:  column nowrap;
+  }
+
+  .container {
+    width: 100%;
+    flex-flow:  row nowrap;
+  }
+}
+
 // Table
 .MuiPaper-root {
   background-color: none !important;
