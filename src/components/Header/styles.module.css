@@ -1,16 +1,19 @@
 @value colors: '../tokens/colors.css';
 @value spacing: '../tokens/spacing.css';
 @value shadows: '../tokens/shadows.css';
-@value white, cloud-grey, matter-grey, anthracite-grey, deep-space-grey, atmosphere-3, ice-blue, lilac-violet, dark-violet, after-burner from colors;
+@value dynamic-ultra from colors;
 @value spacing-1x, spacing-2x,  spacing-3x, spacing-4x, spacing-6x from spacing;
 @value shadow-default from shadows;
 
 .container {
+	z-index: 98;
 	width: 60px;
 	display:  flex;
 	flex-flow:  column nowrap;
 	align-items: center;
-	background:  rgba(0,0,0,0.8);
+	background:  #152238;
+	border: 1px solid #333;
+  box-shadow: 5px 0 7px -3px rgba(0,0,0,0.3);
 }
 
 .item {

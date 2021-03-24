@@ -4,7 +4,18 @@
 @value spacing-1x, spacing-2x, spacing-3x, spacing-4x, spacing-5x, spacing-6x from spacing;
 
 .container {
-	padding:  1.4rem;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	background:  #F8F9FA;
+	min-height: 68px;
+	padding-left:  1.4rem;
+}
+
+.body {
+	padding: 0 1.4rem;
 }
 
 p {

@@ -33,7 +33,9 @@ class ChargersPage extends Component {
   render() {
     return ( 
     	<div className={s.container}>
-    		<h3> Chargers </h3>
+    		<div className={s.header}>
+    			<h3> Chargers </h3>
+    		</div>
     		<div className={s.cards}>
 	    		{
 	    			chargers.map((c, i) => 

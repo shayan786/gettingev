@@ -151,11 +151,7 @@ main {
   }
 }
 
-// Table
-.MuiPaper-root {
-  background-color: none !important;
-}
-
-.MuiPaper-elevation2 {
-  box-shadow: none !important;
+.MuiToolbar-root {
+  background:  #F8F9FA;
+  min-height: 68px !important;
 }
