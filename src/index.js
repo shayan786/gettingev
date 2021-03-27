@@ -7,6 +7,7 @@ import { routes } from './routes.js';
 import { NavigationContextProvider } from './contexts/navigation.js';
 import { CarsContextProvider } from './contexts/cars.js';
 import { ReviewsContextProvider } from './contexts/reviews.js';
+import { EvsesContextProvider } from './contexts/evses.js';
 import Header from './components/Header/Header';
 import ErrorPage from './pages/error/index.js';
 
@@ -33,23 +34,25 @@ class App extends Component {
 	    	<NavigationContextProvider>
 		    	<CarsContextProvider>
 		    		<ReviewsContextProvider>
-			    		<main className="body" ref={this.bodyRef}>
-			    			<Header />
-								<div className="container">
-									<Switch>
-										{
-											routes.map((route, key) => (
-												<Route
-													key={key}
-													path={route.path}
-													exact={route.exact}
-													component={route.component} />
-											))
-										}
-										<Route component={ErrorPage} />
-									</Switch>
-								</div>
-							</main>
+		    			<EvsesContextProvider>
+				    		<main className="body" ref={this.bodyRef}>
+				    			<Header />
+									<div className="container">
+										<Switch>
+											{
+												routes.map((route, key) => (
+													<Route
+														key={key}
+														path={route.path}
+														exact={route.exact}
+														component={route.component} />
+												))
+											}
+											<Route component={ErrorPage} />
+										</Switch>
+									</div>
+								</main>
+							</EvsesContextProvider>
 						</ReviewsContextProvider>
 					</CarsContextProvider>
 				</NavigationContextProvider>

@@ -21,11 +21,11 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { ReviewsContextConsumer } from '../../contexts/reviews.js';
+import { EvsesContextConsumer } from '../../contexts/evses.js';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { api } from '../../utils/api.js';
-import Image from 'material-ui-image'
+import Image from 'material-ui-image';
 
 
 const tableIcons = {
@@ -48,32 +48,7 @@ const tableIcons = {
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
 };
 
-class ReviewsPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showDetailsDialog: false,
-      selectedRowData: null
-    }
-  }
-
-  componentDidMount () {
-    const { params } = this.props.match;
-
-    if (params.id) {
-      fetch(`${api.url}/reviews/${params.id}`, {
-        method: 'GET'
-      }).then(response => {
-        return response.json()
-      }).then(data => {
-        this.setState({ selectedRowData: data, showDetailsDialog: true });
-      }).catch(error => {
-        console.log(error)
-      })
-    }
-  }
-
+class EvsesPage extends Component {
 	_renderError (error, acknowledgeError) {
     return (
       <Dialog
@@ -94,73 +69,24 @@ class ReviewsPage extends Component {
     )
   }
 
-  _renderReviewer(rowData) {
-    const logoStyles = {
-      position: 'static'
-    };
-
-    const containerStyles = {
-      display: 'flex',
-      flexFlow: 'row nowrap',
-      alignItems: 'center',
-      paddingTop: '0px',
-      position: 'static',
-      borderRadius: '50%',
-      width: '26px',
-      height: 'auto',
-      marginRight: '0.8rem'
-    }
-    return (
-      <div className={s.reviewer}>
-        <Image 
-          src={`https://gettingev.com/api${rowData.reviewer.logo[0].formats ? rowData.reviewer.logo[0].formats.thumbnail.url : rowData.reviewer.logo[0].url}`}
-          style={containerStyles}
-          imageStyle={logoStyles} />
-        { rowData.reviewer.name }
-      </div>
-    )
-  }
-
-  _renderDetailsDialog () {
-    const { showDetailsDialog, selectedRowData } = this.state;
-    const { history } = this.props;
-
-    return selectedRowData && (
-      <Dialog
-        open={showDetailsDialog}
-        onClose={() => { this.setState({ showDetailsDialog: false }) }}
-        maxWidth={'lg'}
-        fullWidth={true} >
-        <DialogTitle id="alert-dialog-title">{`${selectedRowData.cars[0].year} ${selectedRowData.cars[0].manufacturer} ${selectedRowData.cars[0].model} - ${selectedRowData.type} Review`}</DialogTitle>
-        <DialogContent className={s.dialogContent}>
-          <iframe width="100%" height="600" src={selectedRowData.url} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => { this.setState({ showDetailsDialog: false }); history.push('/reviews') }} color="primary" autoFocus>
-            Done
-          </Button>
-        </DialogActions>
-      </Dialog>
-    )
-  }
-
-  _renderTableBody(reviews, loading) {
-    const { history } = this.props;
-
+  _renderTableBody(evses, loading) {
     return loading
       ? <CircularProgress 
          className={s.spinner} />
       : (
           <MaterialTable
-            title="Getting EV - Reviews"
+            title="Getting EV - EVSEs"
             icons={tableIcons}
             columns={[
+              { title: "Manufacturer", field: "manufacturer"},
+              { title: "Model", field: "model"},
               { title: "Type", field: "type"},
-              { title: "Reviewer", render: rowData => this._renderReviewer(rowData) },
-              { title: "Car", render: rowData => rowData.cars.length > 0 ? `${rowData.cars[0].year} ${rowData.cars[0].manufacturer} ${rowData.cars[0].model}` : ""}
+              { title: "Cable Length (ft)", field: "cable_length", type: 'numeric'},
+              { title: "Current Rating (A)", field: "current_rating", type: 'numeric'},
+              { title: "Warranty (yrs)", field: "warranty", type: 'numeric'},
+              { title: "Price ($)", field: "price", type: 'currency'}
             ]}
-            data={reviews}
-            onRowClick={(e, rowData) => { this.setState({ showDetailsDialog: true, selectedRowData: rowData }); history.push(`/reviews/${rowData.id}`)} }
+            data={evses}
             options={
               {
                 filtering: false,
@@ -181,15 +107,14 @@ class ReviewsPage extends Component {
   render() {
     return (
       <div>
-      	<ReviewsContextConsumer>
+      	<EvsesContextConsumer>
           {
-            ({ reviews, loading, error, acknowledgeError }) => { return error.state ? this._renderError(error, acknowledgeError) : this._renderTableBody(reviews, loading) }
+            ({ evses, loading, error, acknowledgeError }) => { return error.state ? this._renderError(error, acknowledgeError) : this._renderTableBody(evses, loading) }
           }
-        </ReviewsContextConsumer>
-        { this._renderDetailsDialog() }
+        </EvsesContextConsumer>
       </div>
     )
   }
 }
 
-export default ReviewsPage;
+export default EvsesPage;

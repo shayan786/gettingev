@@ -34,7 +34,7 @@ class ChargersPage extends Component {
     return ( 
     	<div className={s.container}>
     		<div className={s.header}>
-    			<h3> Chargers </h3>
+    			<h3> Getting EV - Chargers </h3>
     		</div>
     		<div className={s.cards}>
 	    		{

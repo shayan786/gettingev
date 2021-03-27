@@ -29,6 +29,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CompareIcon from '@material-ui/icons/Compare';
 import { api } from '../../utils/api.js';
+import Tooltip from '@material-ui/core/Tooltip';
+import Image from 'material-ui-image';
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -119,6 +121,32 @@ class HomePage extends Component {
             }, {});
   }
 
+  _renderManufacturer(rowData) {
+    const logoStyles = {
+      position: 'static'
+    };
+
+    const containerStyles = {
+      display: 'flex',
+      flexFlow: 'row nowrap',
+      alignItems: 'center',
+      paddingTop: '0px',
+      position: 'static',
+      borderRadius: '50%',
+      width: '26px',
+      height: 'auto',
+      margin: '0 auto'
+    }
+    return (
+      <Tooltip title={rowData.manufacturer} placement="bottom">
+        <Image 
+          src={logos.find(l => l.name === rowData.manufacturer.toLowerCase()).url}
+          style={containerStyles}
+          imageStyle={logoStyles} />
+      </Tooltip>
+    )
+  }
+
   _renderTableBody(cars, loading) {
     const { history } = this.props;
 
@@ -133,7 +161,7 @@ class HomePage extends Component {
               { title: "Year", field: "year", type: 'date', lookup: this._getLookupObject(cars.map(s => s.year))},
               { title: "Manufacturer", 
                 field: 'manufacturer', 
-                render: rowData =>  <img className={s.car_logo} src={logos.find(l => l.name === rowData.manufacturer.toLowerCase()).url} />, 
+                render: rowData =>  this._renderManufacturer(rowData), 
                 align: 'center',
                 lookup: this._getLookupObject(cars.map(s => s.manufacturer))
               },
@@ -158,7 +186,7 @@ class HomePage extends Component {
                 },
                 paging: false,
                 selection: true,
-                maxBodyHeight: window.innerHeight - 60,
+                maxBodyHeight: window.innerHeight - 70,
                 padding: 'dense'
               }
             }

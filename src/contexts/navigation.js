@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import RateReviewOutlinedIcon from '@material-ui/icons/RateReviewOutlined';
 import EvStationOutlinedIcon from '@material-ui/icons/EvStationOutlined';
+import PowerOutlinedIcon from '@material-ui/icons/PowerOutlined';
 
 const NavigationContext = React.createContext();
 
@@ -25,6 +26,12 @@ const NAV_ITEMS = [
     active: false
   },
   {
+    title: "EVSEs / Chargers",
+    url: "/evses",
+    icon: <PowerOutlinedIcon />,
+    active: false
+  },
+  {
     title: "About",
     url: "/about",
     icon: <InfoOutlinedIcon />,
@@ -42,18 +49,25 @@ export class NavigationContextProvider extends Component {
   }
 
   componentDidMount() {
-    const path = window.location.pathname.split('/')[0];
-    let primaryNavItem = this.state.items.find(i => i.url === path);
+    const path = window.location.pathname.split('/')[1].length === 1 ? "" : window.location.pathname.split('/')[1];
+    let primaryNavItem = this.state.items.find(i => i.url === `/${path}`);
 
-    // this._onChangeLocation(primaryNavItem);
+    this._onChangeLocation(primaryNavItem);
   }
 
   _onChangeLocation(item) {
-    this.state.items.forEach(i => {
+    let tempItems = this.state.items;
+
+    tempItems.forEach(i => {
       i.active = false;
+
+      if (i.title == item.title)
+        i.active = true
     })
 
-    this.state.items.find(i => i.title === item.title).active = true;
+    this.setState({
+      items: tempItems
+    })
   }
 
   render() {

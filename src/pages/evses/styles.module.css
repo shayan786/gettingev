@@ -1,0 +1,22 @@
+@value colors: '../../components/tokens/colors.css';
+@value spacing: '../../components/tokens/spacing.css';
+@value white, cloud-grey, winter-grey, anthracite-grey, matter-grey, deep-sky-blue, deep-space-grey from colors;
+@value spacing-1x, spacing-2x, spacing-3x, spacing-4x, spacing-5x, spacing-6x from spacing;
+
+.container {
+
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	background:  #F8F9FA;
+	min-height: 68px;
+	padding-left:  1.4rem;
+}
+
+.spinner {
+	position: absolute;
+	top:  30%;
+	left:  50%;
+}
