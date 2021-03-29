@@ -1,6 +1,5 @@
 import React, { Component, forwardRef } from 'react';
 import s from './styles.module.css';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import DetailsPanel from '../../components/DetailsPanel/DetailsPanel.js';
 import CompareDialog from '../../components/CompareDialog/CompareDialog.js';
 import Button from '@material-ui/core/Button';
@@ -150,55 +149,54 @@ class HomePage extends Component {
   _renderTableBody(cars, loading) {
     const { history } = this.props;
 
-    return loading
-      ? <CircularProgress 
-         className={s.spinner} />
-      : (
-          <MaterialTable
-            title="Getting EV - Cars"
-            icons={tableIcons}
-            columns={[
-              { title: "Year", field: "year", type: 'date', lookup: this._getLookupObject(cars.map(s => s.year))},
-              { title: "Manufacturer", 
-                field: 'manufacturer', 
-                render: rowData =>  this._renderManufacturer(rowData), 
-                align: 'center',
-                lookup: this._getLookupObject(cars.map(s => s.manufacturer))
-              },
-              { title: "Model", field: "model" },
-              { title: "Trim", field: "trim" },
-              { title: "Drivetrain", field: "drivetrain", lookup: this._getLookupObject(cars.map(s => s.drivetrain)) },
-              { title: "Range (mi)", field: "range", type: 'numeric', filtering: false },
-              { title: "Battery (kwh)", field: "battery", type: 'numeric', filtering: false },
-              { title: "Accel. 0-60 (s)", field: "acceleration", type: 'numeric', filtering: false },
-              { title: "Curb Weight (lbs)", field: "weight_lbs", type: 'numeric', filtering: false },
-              { title: "Dimensions", field: "dimensions", filtering: false },
-              { title: "Price ($)", field: "price", type: 'currency', filtering: false, customSort: (a, b) =>  a.price - b.price }
-            ]}
-            data={cars}
-            onRowClick={(e, rowData) => { this.setState({ showDetailsPanel: true, selectedRowData: rowData });  history.push(`/${rowData.id}`)} }
-            options={
-              {
-                filtering: true,
-                actionsColumnIndex: -1,
-                headerStyle: {
-                  backgroundColor: 'white'
-                },
-                paging: false,
-                selection: true,
-                maxBodyHeight: window.innerHeight - 70,
-                padding: 'dense'
-              }
-            }
-            actions={[
-              {
-                tooltip: 'Compare',
-                icon: () => <CompareIcon />,
-                onClick: (evt, data) => { this.setState({ showCompareDialog: true, compareCars: data }); history.push(`/compare/${data.map(c => c.id)}`)}
-              }
-            ]}>
-          </MaterialTable>
-        )
+    return (
+      <MaterialTable
+        isLoading={loading}
+        title="Getting EV - Cars"
+        icons={tableIcons}
+        columns={[
+          { title: "Year", field: "year", type: 'date', lookup: this._getLookupObject(cars.map(s => s.year))},
+          { title: "Manufacturer", 
+            field: 'manufacturer', 
+            render: rowData =>  this._renderManufacturer(rowData), 
+            align: 'center',
+            lookup: this._getLookupObject(cars.map(s => s.manufacturer))
+          },
+          { title: "Model", field: "model" },
+          { title: "Trim", field: "trim" },
+          { title: "Drivetrain", field: "drivetrain", lookup: this._getLookupObject(cars.map(s => s.drivetrain)) },
+          { title: "Range (mi)", field: "range", type: 'numeric', filtering: false },
+          { title: "Battery (kwh)", field: "battery", type: 'numeric', filtering: false },
+          { title: "Accel. 0-60 (s)", field: "acceleration", type: 'numeric', filtering: false },
+          { title: "Curb Weight (lbs)", field: "weight_lbs", type: 'numeric', filtering: false },
+          { title: "Dimensions", field: "dimensions", filtering: false },
+          { title: "Tax Rebate US ($)", field: "tax_credit", type: 'currency', filtering: false, customSort: (a, b) =>  a.tax_credit - b.tax_credit },
+          { title: "Price ($)", field: "price", type: 'currency', filtering: false, customSort: (a, b) =>  a.price - b.price }
+        ]}
+        data={cars}
+        onRowClick={(e, rowData) => { this.setState({ showDetailsPanel: true, selectedRowData: rowData });  history.push(`/${rowData.id}`)} }
+        options={
+          {
+            filtering: true,
+            actionsColumnIndex: -1,
+            headerStyle: {
+              backgroundColor: 'white'
+            },
+            paging: false,
+            selection: true,
+            maxBodyHeight: window.innerHeight - 70,
+            padding: 'dense'
+          }
+        }
+        actions={[
+          {
+            tooltip: 'Compare',
+            icon: () => <CompareIcon />,
+            onClick: (evt, data) => { this.setState({ showCompareDialog: true, compareCars: data }); history.push(`/compare/${data.map(c => c.id)}`)}
+          }
+        ]}>
+      </MaterialTable>
+    )
   }
 
   _closeDetailsPanel () {
