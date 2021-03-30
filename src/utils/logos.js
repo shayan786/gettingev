@@ -70,5 +70,13 @@ export const logos = [
 	{
 		name: 'mazda',
 		url: '/images/car_logos/mazda.svg'
+	},
+	{
+		name: 'bmw',
+		url: '/images/car_logos/bmw.svg'
+	},
+	{
+		name: 'jaguar',
+		url: '/images/car_logos/jaguar.svg'
 	}
 ];
