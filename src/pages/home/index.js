@@ -5,6 +5,7 @@ import CompareDialog from '../../components/CompareDialog/CompareDialog.js';
 import Button from '@material-ui/core/Button';
 import { CarsContextConsumer } from '../../contexts/cars.js';
 import { logos } from '../../utils/logos.js';
+import { bodyStyles } from '../../utils/bodyStyles.js';
 import MaterialTable from 'material-table';
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
@@ -146,6 +147,32 @@ class HomePage extends Component {
     )
   }
 
+  _renderStyle(rowData) {
+    const logoStyles = {
+      position: 'static'
+    };
+
+    const containerStyles = {
+      display: 'flex',
+      flexFlow: 'row nowrap',
+      alignItems: 'center',
+      paddingTop: '0px',
+      position: 'static',
+      borderRadius: '50%',
+      width: '26px',
+      height: 'auto',
+      margin: '0 auto'
+    }
+    return (
+      <Tooltip title={rowData.style} placement="bottom">
+        <Image 
+          src={bodyStyles.find(l => l.name === rowData.style.toLowerCase()).url}
+          style={containerStyles}
+          imageStyle={logoStyles} />
+      </Tooltip>
+    )
+  }
+
   _renderTableBody(cars, loading) {
     const { history } = this.props;
 
@@ -155,8 +182,7 @@ class HomePage extends Component {
         title="Getting EV - Cars"
         icons={tableIcons}
         columns={[
-          { title: "Year", field: "year", type: 'date', lookup: this._getLookupObject(cars.map(s => s.year))},
-          { title: "Manufacturer", 
+          { title: "Manu.", 
             field: 'manufacturer', 
             render: rowData =>  this._renderManufacturer(rowData), 
             align: 'center',
@@ -164,14 +190,20 @@ class HomePage extends Component {
           },
           { title: "Model", field: "model" },
           { title: "Trim", field: "trim" },
+          { title: "Style", 
+            field: 'style', 
+            render: rowData =>  this._renderStyle(rowData), 
+            align: 'center',
+            lookup: this._getLookupObject(cars.map(s => s.style))
+          },
           { title: "Drivetrain", field: "drivetrain", lookup: this._getLookupObject(cars.map(s => s.drivetrain)) },
           { title: "Range (mi)", field: "range", type: 'numeric', filtering: false },
           { title: "Battery (kwh)", field: "battery", type: 'numeric', filtering: false },
           { title: "Accel. 0-60 (s)", field: "acceleration", type: 'numeric', filtering: false },
-          { title: "Curb Weight (lbs)", field: "weight_lbs", type: 'numeric', filtering: false },
+          { title: "Weight (lbs)", field: "weight_lbs", type: 'numeric', filtering: false },
           { title: "Dimensions", field: "dimensions", filtering: false },
-          { title: "Tax Rebate US ($)", field: "tax_credit", type: 'currency', filtering: false, customSort: (a, b) =>  a.tax_credit - b.tax_credit },
-          { title: "Price ($)", field: "price", type: 'currency', filtering: false, customSort: (a, b) =>  a.price - b.price }
+          { title: "Rebate US ($)", field: "tax_credit", type: 'currency', filtering: false, customSort: (a, b) =>  a.tax_credit - b.tax_credit },
+          { title: "MSRP ($)", field: "price", type: 'currency', filtering: false, customSort: (a, b) =>  a.price - b.price }
         ]}
         data={cars}
         onRowClick={(e, rowData) => { this.setState({ showDetailsPanel: true, selectedRowData: rowData });  history.push(`/${rowData.id}`)} }
