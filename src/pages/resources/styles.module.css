@@ -15,7 +15,7 @@
 }
 
 .body {
-	padding: 1.4rem;
+	padding: 0 1.4rem 1.4rem 1.4rem;
 }
 
 .resource {
@@ -24,6 +24,7 @@
 	align-items: flex-start;
 	justify-content: flex-start;
 	padding-bottom: 1.4rem;
+	padding-top: 1.4rem;
 	border-bottom: 1px solid cloud-grey;
 }
 
