@@ -78,5 +78,9 @@ export const logos = [
 	{
 		name: 'jaguar',
 		url: '/images/car_logos/jaguar.svg'
+	},
+	{
+		name: 'mercedes',
+		url: '/images/car_logos/mercedes.svg'
 	}
 ];
