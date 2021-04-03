@@ -24,8 +24,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { EvsesContextConsumer } from '../../contexts/evses.js';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { api } from '../../utils/api.js';
-import Image from 'material-ui-image';
 
 
 const tableIcons = {

@@ -3,6 +3,7 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import RateReviewOutlinedIcon from '@material-ui/icons/RateReviewOutlined';
 import EvStationOutlinedIcon from '@material-ui/icons/EvStationOutlined';
 import PowerOutlinedIcon from '@material-ui/icons/PowerOutlined';
+import LibraryBooksOutlinedIcon from '@material-ui/icons/LibraryBooksOutlined';
 
 const NavigationContext = React.createContext();
 
@@ -29,6 +30,12 @@ const NAV_ITEMS = [
     title: "EVSEs / Chargers",
     url: "/evses",
     icon: <PowerOutlinedIcon />,
+    active: false
+  },
+  {
+    title: "Resources",
+    url: "/resources",
+    icon: <LibraryBooksOutlinedIcon />,
     active: false
   },
   {
@@ -61,7 +68,7 @@ export class NavigationContextProvider extends Component {
     tempItems.forEach(i => {
       i.active = false;
 
-      if (i.title == item.title)
+      if (i.title === item.title)
         i.active = true
     })
 

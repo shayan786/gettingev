@@ -1,0 +1,36 @@
+@value colors: '../../components/tokens/colors.css';
+@value spacing: '../../components/tokens/spacing.css';
+@value white, cloud-grey, winter-grey, anthracite-grey, matter-grey, deep-sky-blue, deep-space-grey from colors;
+@value spacing-1x, spacing-2x, spacing-3x, spacing-4x, spacing-5x, spacing-6x from spacing;
+
+.container {
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	background:  #F8F9FA;
+	min-height: 68px;
+	padding-left:  1.4rem;
+}
+
+.body {
+	padding: 1.4rem;
+}
+
+.resource {
+	display: flex;
+	flex-flow:  column nowrap;
+	align-items: flex-start;
+	justify-content: flex-start;
+	padding-bottom: 1.4rem;
+	border-bottom: 1px solid cloud-grey;
+}
+
+.resource:last-child {
+	border-bottom: none;
+}
+
+h4 {
+	margin-bottom: 0.8rem;
+}

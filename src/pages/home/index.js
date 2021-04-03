@@ -1,5 +1,5 @@
 import React, { Component, forwardRef } from 'react';
-import s from './styles.module.css';
+// import s from './styles.module.css';
 import DetailsPanel from '../../components/DetailsPanel/DetailsPanel.js';
 import CompareDialog from '../../components/CompareDialog/CompareDialog.js';
 import Button from '@material-ui/core/Button';
