@@ -11,6 +11,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
 import Tooltip from '@material-ui/core/Tooltip';
+import Image from 'material-ui-image';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
 class DetailsPanel extends Component {
@@ -41,10 +42,21 @@ class DetailsPanel extends Component {
 	}
 
 	_renderCarousel (car) {
+    const imageStyle = {
+      objectFit: 'contain'
+    };
+
+    const containerStyles = {
+    }
 		return (
 			<Carousel className={s.carousel}>
       	{
-      		car.images.map((image, index) => <img className={s.image} key={index} src={image.formats.medium ? `${api.url}${image.formats.medium.url}` : `${api.url}${image.formats.thumbnail.url}`} />)
+      		car.images.map((image, index) => 
+            <Image
+              imageStyle={imageStyle}
+              style={containerStyles}
+              key={index}
+              src={image.formats.medium ? `${api.url}${image.formats.medium.url}` : `${api.url}${image.formats.thumbnail.url}`} />)
       	} 	     
       </Carousel>
 		)

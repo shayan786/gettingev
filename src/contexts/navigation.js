@@ -56,7 +56,8 @@ export class NavigationContextProvider extends Component {
   }
 
   componentDidMount() {
-    const path = window.location.pathname.split('/')[1].length === 1 ? "" : window.location.pathname.split('/')[1];
+    const pathname =  window.location.pathname.split('/')[1];
+    const path = (pathname.length === 1 || Number.isInteger(parseInt(pathname))) ? "" : pathname;
     let primaryNavItem = this.state.items.find(i => i.url === `/${path}`);
 
     this._onChangeLocation(primaryNavItem);
