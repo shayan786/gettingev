@@ -25,6 +25,18 @@ const chargers = [
 		image: "/images/chargers/evgo.png",
 		url: "https://www.evgo.com/find-a-charger/",
 		descirption: "EVgo is America's Largest Public Electric Vehicle (EV) Fast Charging Network. With more than 800 EV fast charging stations in 34 states."
+	},
+	{
+		name: "GreenLots",
+		image: "/images/chargers/greenlots.png",
+		url: "https://charge.greenlots.com/evowner/portal/locate-charger",
+		descirption: "Greenlots helps communities of all sizes and governments at every level prepare for the rapid introduction of electric vehicles, by deploying resilient EV charging."
+	},
+	{
+		name: "PlugShare",
+		image: "/images/chargers/plugshare.jpg",
+		url: "https://www.plugshare.com/en",
+		descirption: "Find EV charging stations with PlugShare's map of over 440000 electric vehicle charging stations! Charging tips, reviews and photos from the EV community."
 	}
 ]
 
