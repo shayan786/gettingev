@@ -31,6 +31,7 @@ import CompareIcon from '@material-ui/icons/Compare';
 import { api } from '../../utils/api.js';
 import Tooltip from '@material-ui/core/Tooltip';
 import Image from 'material-ui-image';
+import { useLocation } from "react-router-dom";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -66,9 +67,12 @@ class HomePage extends Component {
 
   componentDidMount () {
     const { params } = this.props.match;
+    const searchParams = new URLSearchParams(this.props.location.search);
+    const carId = searchParams.get("car");
+    const carIds = searchParams.get("cars");
 
-    if (params.id) {
-      fetch(`${api.url}/cars/${params.id}`, {
+    if (carId) {
+      fetch(`${api.url}/cars/${carId}`, {
         method: 'GET'
       }).then(response => {
         return response.json()
@@ -78,13 +82,13 @@ class HomePage extends Component {
         console.log(error)
       })
     }
-    if (params.cars) {
+    if (carIds) {
       fetch(`${api.url}/cars`, {
         method: 'GET'
       }).then(response => {
         return response.json()
       }).then(data => {
-        const filteredCars = data.filter(d => params.cars.split(',').map(c => parseInt(c)).includes(d.id))
+        const filteredCars = data.filter(d => carIds.split(',').map(c => parseInt(c)).includes(d.id))
         this.setState({ compareCars: filteredCars, showCompareDialog: true });
       }).catch(error => {
         console.log(error)
@@ -206,7 +210,7 @@ class HomePage extends Component {
           { title: "MSRP ($)", field: "price", type: 'currency', filtering: false, customSort: (a, b) =>  a.price - b.price }
         ]}
         data={cars}
-        onRowClick={(e, rowData) => { this.setState({ showDetailsPanel: true, selectedRowData: rowData });  history.push(`/${rowData.id}`)} }
+        onRowClick={(e, rowData) => { this.setState({ showDetailsPanel: true, selectedRowData: rowData });  history.push(`/?car=${rowData.id}`)} }
         options={
           {
             filtering: true,
@@ -224,7 +228,7 @@ class HomePage extends Component {
           {
             tooltip: 'Compare',
             icon: () => <CompareIcon />,
-            onClick: (evt, data) => { this.setState({ showCompareDialog: true, compareCars: data }); history.push(`/compare/${data.map(c => c.id)}`)}
+            onClick: (evt, data) => { this.setState({ showCompareDialog: true, compareCars: data }); history.push(`/?cars=${data.map(c => c.id)}`)}
           }
         ]}>
       </MaterialTable>
