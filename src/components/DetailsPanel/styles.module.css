@@ -39,6 +39,12 @@
   justify-content: space-between !important;
 }
 
+.listItem__finalPrice {
+  justify-content: space-between !important;
+  margin-top:  1rem;
+  font-weight: bold;
+}
+
 @media only screen and (max-width: 768px) {
   .container {
     width: 100%;

@@ -13,6 +13,11 @@ import Divider from '@material-ui/core/Divider';
 import Tooltip from '@material-ui/core/Tooltip';
 import Image from 'material-ui-image';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+const currencyFormatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD'
+})
+
 
 class DetailsPanel extends Component {
   constructor(props) {
@@ -62,6 +67,52 @@ class DetailsPanel extends Component {
 		)
 	}
 
+  _renderCost (car) {
+    return (
+      <List
+        className={s.overall}
+        dense={true}
+        subheader={
+          <ListSubheader disableSticky={true}>
+            Approximate Cost
+          </ListSubheader>
+        }>
+          <ListItem className={s.listItem}>
+            <div>
+              MSRP (USD)
+            </div>
+            <div>
+              {car.price ? currencyFormatter.format(car.price) : '-'}
+            </div>
+          </ListItem>
+          <ListItem className={s.listItem}>
+            <div>
+              Federal Incentive
+            </div>
+            <div>
+              {currencyFormatter.format(car.tax_credit)}
+            </div>
+          </ListItem>
+          <ListItem className={s.listItem}>
+            <div>
+              Tax, Title, Destination Fees
+            </div>
+            <div>
+              {currencyFormatter.format(car.price*0.08 + 1100)}
+            </div>
+          </ListItem>
+          <ListItem className={s.listItem__finalPrice}>
+            <div>
+              Total
+            </div>
+            <div>
+              {car.price ? currencyFormatter.format(car.price - car.tax_credit + 1100 + car.price*0.08) : "?"}
+            </div>
+          </ListItem>
+      </List>
+    )
+  }
+
   _renderOverall (car) {
     const overallMap = [
       {
@@ -89,6 +140,7 @@ class DetailsPanel extends Component {
     return (
       <List
         className={s.overall}
+        dense={true}
         subheader={
           <ListSubheader disableSticky={true}>
             Overall
@@ -129,6 +181,7 @@ class DetailsPanel extends Component {
     return (
       <List
         className={s.overall}
+        dense={true}
         subheader={
           <ListSubheader disableSticky={true}>
             Battery and Charging
@@ -169,6 +222,7 @@ class DetailsPanel extends Component {
     return (
       <List
         className={s.overall}
+        dense={true}
         subheader={
           <ListSubheader disableSticky={true}>
             Powertrain
@@ -213,6 +267,7 @@ class DetailsPanel extends Component {
     return (
       <List
         className={s.overall}
+        dense={true}
         subheader={
           <ListSubheader disableSticky={true}>
             Body and Chassis
@@ -238,6 +293,7 @@ class DetailsPanel extends Component {
     return car.reviews.length > 0 ? (
       <List
         className={s.overall}
+        dense={true}
         subheader={
           <ListSubheader disableSticky={true}>
             Reviews
@@ -273,6 +329,8 @@ class DetailsPanel extends Component {
     		{ this._renderHeader(`${car.year} ${car.manufacturer} ${car.model} - ${car.trim}`, handleClose) }
     		<div className={s.body}>
     			{ this._renderCarousel(car) }
+          { this._renderCost(car) }
+          <Divider />
           { this._renderOverall(car) }
           <Divider />
           { this._renderBattery(car) }
