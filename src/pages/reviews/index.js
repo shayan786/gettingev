@@ -156,8 +156,16 @@ class ReviewsPage extends Component {
             icons={tableIcons}
             columns={[
               { title: "Type", field: "type"},
-              { title: "Reviewer", render: rowData => this._renderReviewer(rowData) },
-              { title: "Car", render: rowData => rowData.cars.length > 0 ? `${rowData.cars[0].year} ${rowData.cars[0].manufacturer} ${rowData.cars[0].model}` : ""}
+              { 
+                title: "Reviewer",
+                render: rowData => this._renderReviewer(rowData),
+                customSort: (a, b) => a.reviewer.name > b.reviewer.name ? -1 : 1
+              },
+              { 
+                title: "Car",
+                render: rowData => rowData.cars.length > 0 ? `${rowData.cars[0].year} ${rowData.cars[0].manufacturer} ${rowData.cars[0].model}` : "",
+                customSort: (a, b) => a.cars[0].manufacturer > b.cars[0].manufacturer ? -1 : 1
+              }
             ]}
             data={reviews}
             onRowClick={(e, rowData) => { this.setState({ showDetailsDialog: true, selectedRowData: rowData }); history.push(`/reviews/${rowData.id}`)} }

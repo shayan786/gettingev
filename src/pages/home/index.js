@@ -31,7 +31,6 @@ import CompareIcon from '@material-ui/icons/Compare';
 import { api } from '../../utils/api.js';
 import Tooltip from '@material-ui/core/Tooltip';
 import Image from 'material-ui-image';
-import { useLocation } from "react-router-dom";
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -66,7 +65,6 @@ class HomePage extends Component {
   }
 
   componentDidMount () {
-    const { params } = this.props.match;
     const searchParams = new URLSearchParams(this.props.location.search);
     const carId = searchParams.get("car");
     const carIds = searchParams.get("cars");
