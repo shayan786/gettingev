@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import s from './styles.module.css';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-// import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
@@ -77,6 +76,13 @@ class AboutPage extends Component {
 						onClick={() => { window.location.href = "mailto:shayandhanani@gmail.com" }}>
             Contact Us
         	</Button>
+        	<a href="https://gettingev.com/api/documentation/v1.0.0" target="_blank">
+	        	<Button
+	        		className={s.apiButton}
+							variant="contained">
+	            View API Docs
+	        	</Button>
+	        </a>
 				</div>
 			</div>
 		)
