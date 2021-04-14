@@ -46,7 +46,7 @@ class ChargingCurvesPage extends Component {
               position="bottom"
               style={{ textAnchor: "middle" }} />
           </XAxis>
-          <YAxis dataKey="kw">
+          <YAxis>
             <Label
               value="KW"
               position="left"
@@ -60,10 +60,11 @@ class ChargingCurvesPage extends Component {
             chargingCurves.map((c, index) => 
               <Line
                 key={index}
-                dataKey="kw"
+                dataKey={`${c.car.manufacturer}_${c.car.model}`}
                 name={`${c.car.manufacturer} - ${c.car.model}`}
                 type="monotone"
-                stroke="#8884d8"
+                stroke={chartColors[index]}
+                strokeWidth={2}
                 activeDot={{ r: 8 }} />
             )
           }
@@ -91,31 +92,3 @@ class ChargingCurvesPage extends Component {
 }
 
 export default ChargingCurvesPage;
-
-
-/*
-return data.length > 0 ? (
-      <div>
-        <h4> US Quarterly Sales </h4>
-        <BarChart
-          width={window.innerWidth - 120}
-          height={300}
-          data={data} >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          {
-            uniqueCars.map((car, index) => 
-              <Bar
-                key={index}
-                dataKey={car}
-                stackId="a"
-                fill={chartColors[index]} />
-            )
-          }
-        </BarChart>
-      </div>
-    ) : null;
-    */

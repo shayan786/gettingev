@@ -43,17 +43,28 @@ export function getUniqueCars (sales) {
 
 
 export function getChargingCurves (data) {
+	let temp = [];
 	let curveData = [];
 
-	data.forEach(d => {
-		d.data.points.forEach(p => {
-			curveData.push({
-				car: `${d.car.manufacturer} - ${d.car.model}`,
-				kw: p.kw,
-				soc: p.soc
+	if (data.length > 0) {
+		data.forEach(d => {
+			d.data.points.forEach(p => {
+				temp.push({
+					car: `${d.car.manufacturer}_${d.car.model}`,
+					[`${d.car.manufacturer}_${d.car.model}`]: p.kw,
+					soc: p.soc
+				})
 			})
+		});
+
+		data[0].data.points.forEach(d => {
+			let filter = [];
+			temp.filter(t => d.soc === t.soc).forEach(t => {
+				filter.push(t)
+			})
+			curveData.push(Object.assign({}, ...filter))
 		})
-	})
+	}
 
 	return curveData;
 }
