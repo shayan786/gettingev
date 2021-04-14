@@ -9,6 +9,8 @@ import { CarsContextProvider } from './contexts/cars.js';
 import { ReviewsContextProvider } from './contexts/reviews.js';
 import { EvsesContextProvider } from './contexts/evses.js';
 import { ResourcesContextProvider } from './contexts/resources.js';
+import { SalesContextProvider } from './contexts/sales.js';
+import { ChargingCurvesContextProvider } from './contexts/chargingCurves.js';
 import Header from './components/Header/Header';
 import ErrorPage from './pages/error/index.js';
 
@@ -37,23 +39,27 @@ class App extends Component {
 		    		<ReviewsContextProvider>
 		    			<EvsesContextProvider>
 		    				<ResourcesContextProvider>
-					    		<main className="body" ref={this.bodyRef}>
-					    			<Header />
-										<div className="container">
-											<Switch>
-												{
-													routes.map((route, key) => (
-														<Route
-															key={key}
-															path={route.path}
-															exact={route.exact}
-															component={route.component} />
-													))
-												}
-												<Route component={ErrorPage} />
-											</Switch>
-										</div>
-									</main>
+		    					<SalesContextProvider>
+		    						<ChargingCurvesContextProvider>
+							    		<main className="body" ref={this.bodyRef}>
+							    			<Header />
+												<div className="container">
+													<Switch>
+														{
+															routes.map((route, key) => (
+																<Route
+																	key={key}
+																	path={route.path}
+																	exact={route.exact}
+																	component={route.component} />
+															))
+														}
+														<Route component={ErrorPage} />
+													</Switch>
+												</div>
+											</main>
+										</ChargingCurvesContextProvider>
+									</SalesContextProvider>
 								</ResourcesContextProvider>
 							</EvsesContextProvider>
 						</ReviewsContextProvider>

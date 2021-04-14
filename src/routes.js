@@ -4,6 +4,8 @@ import AboutPage from './pages/about/index.js';
 import ReviewsPage from './pages/reviews/index.js';
 import EvsesPage from './pages/evses/index.js';
 import ResourcesPage from './pages/resources/index.js';
+import SalesPage from './pages/sales/index.js';
+import ChargingCurvesPage from './pages/chargingCurves/index.js';
 
 export const routes = [
 	{
@@ -30,6 +32,16 @@ export const routes = [
 		path: "/evses",
 		exact: true,
 		component: EvsesPage
+	},
+	{
+		path: "/sales",
+		exact: true,
+		component: SalesPage
+	},
+	{
+		path: "/charging-curves",
+		exact: true,
+		component: ChargingCurvesPage
 	},
 	{
 		path: "/resources",

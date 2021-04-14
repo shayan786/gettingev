@@ -4,6 +4,8 @@ import RateReviewOutlinedIcon from '@material-ui/icons/RateReviewOutlined';
 import EvStationOutlinedIcon from '@material-ui/icons/EvStationOutlined';
 import PowerOutlinedIcon from '@material-ui/icons/PowerOutlined';
 import LibraryBooksOutlinedIcon from '@material-ui/icons/LibraryBooksOutlined';
+import AssessmentOutlinedIcon from '@material-ui/icons/AssessmentOutlined';
+import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
 
 const NavigationContext = React.createContext();
 
@@ -33,11 +35,24 @@ const NAV_ITEMS = [
     active: false
   },
   {
+    title: "Sales Data",
+    url: "/sales",
+    icon: <AssessmentOutlinedIcon />,
+    active: false
+  },
+  {
+    title: "Charging Curves",
+    url: "/charging-curves",
+    icon: <TimelineOutlinedIcon />,
+    active: false
+  },
+  {
     title: "Resources",
     url: "/resources",
     icon: <LibraryBooksOutlinedIcon />,
     active: false
   },
+  
   {
     title: "About",
     url: "/about",
