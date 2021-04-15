@@ -50,8 +50,8 @@ export function getChargingCurves (data) {
 		data.forEach(d => {
 			d.data.points.forEach(p => {
 				temp.push({
-					car: `${d.car.manufacturer}_${d.car.model}`,
-					[`${d.car.manufacturer}_${d.car.model}`]: p.kw,
+					car: `${d.car.manufacturer}_${d.car.model}_${d.car.trim}`,
+					[`${d.car.manufacturer}_${d.car.model}_${d.car.trim}`]: p.kw,
 					soc: p.soc
 				})
 			})

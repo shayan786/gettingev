@@ -60,8 +60,8 @@ class ChargingCurvesPage extends Component {
             chargingCurves.map((c, index) => 
               <Line
                 key={index}
-                dataKey={`${c.car.manufacturer}_${c.car.model}`}
-                name={`${c.car.manufacturer} - ${c.car.model}`}
+                dataKey={`${c.car.manufacturer}_${c.car.model}_${c.car.trim}`}
+                name={`${c.car.manufacturer} - ${c.car.model} (${c.car.trim})`}
                 type="monotone"
                 stroke={chartColors[index]}
                 strokeWidth={2}

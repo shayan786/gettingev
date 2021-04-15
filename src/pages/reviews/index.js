@@ -131,7 +131,7 @@ class ReviewsPage extends Component {
         onClose={() => { this.setState({ showDetailsDialog: false }) }}
         maxWidth={'lg'}
         fullWidth={true} >
-        <DialogTitle id="alert-dialog-title">{`${selectedRowData.cars[0].year} ${selectedRowData.cars[0].manufacturer} ${selectedRowData.cars[0].model} - ${selectedRowData.type} Review`}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{`${selectedRowData.cars[0].manufacturer} ${selectedRowData.cars[0].model} - ${selectedRowData.type} Review`}</DialogTitle>
         <DialogContent className={s.dialogContent}>
           <iframe width="100%" height="600" src={selectedRowData.url} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </DialogContent>
@@ -163,7 +163,7 @@ class ReviewsPage extends Component {
               },
               { 
                 title: "Car",
-                render: rowData => rowData.cars.length > 0 ? `${rowData.cars[0].year} ${rowData.cars[0].manufacturer} ${rowData.cars[0].model}` : "",
+                render: rowData => rowData.cars.length > 0 ? `${rowData.cars[0].manufacturer} ${rowData.cars[0].model}` : "",
                 customSort: (a, b) => a.cars[0].manufacturer > b.cars[0].manufacturer ? -1 : 1
               }
             ]}
