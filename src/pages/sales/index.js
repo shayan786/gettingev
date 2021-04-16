@@ -7,8 +7,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import { SalesContextConsumer } from '../../contexts/sales.js';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { getQuarterlySales, getUniqueCars, chartColors} from '../../utils/helpers.js';
+import Divider from '@material-ui/core/Divider';
 
 class SalesPage extends Component {
 	_renderError (error, acknowledgeError) {
@@ -32,42 +33,44 @@ class SalesPage extends Component {
   }
 
   _renderSales (sales, loading) {
-    return (
+    return sales.length > 0 ? (
       <div>
-        { this._renderUSSales(sales.filter(s => s.country === 'US'), loading)}
+        { this._renderCountrySales(sales.find(s => s.country === 'US').data.sales, 'US', loading) }
+        <Divider className={s.divider} />
+        { this._renderCountrySales(sales.find(s => s.country === 'UK').data.sales, 'UK', loading) }
       </div>
-    )
+    ) : null
   }
 
-  _renderUSSales(sales, loading) {
-    const data = getQuarterlySales(sales);
+  _renderCountrySales(sales, country, loading) {
     const uniqueCars = getUniqueCars(sales);
 
-    return data.length > 0 ? (
+    return sales.length > 0 ? (
       <div>
-        <h4> US Quarterly Sales </h4>
-        <BarChart
-          width={window.innerWidth - 120}
-          height={300}
-          data={data} >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          {
-            uniqueCars.map((car, index) => 
-              <Bar
-                key={index}
-                dataKey={car}
-                stackId="a"
-                fill={chartColors[index]} />
-            )
-          }
-        </BarChart>
+        <h4>{`${country} Quarterly Sales`} </h4>
+        <ResponsiveContainer width={"100%"} height={300}>
+          <BarChart
+            data={sales} >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="time" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            {
+              uniqueCars.map((car, index) => 
+                <Bar
+                  key={index}
+                  dataKey={car}
+                  stackId="a"
+                  fill={chartColors[index]} />
+              )
+            }
+          </BarChart>
+        </ResponsiveContainer>
       </div>
     ) : null;
   }
+
 
   render() {
 		return (

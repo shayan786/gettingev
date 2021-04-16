@@ -31,16 +31,17 @@ export function getQuarterlySales (sales) {
 }
 
 export function getUniqueCars (sales) {
-	const mapped = sales.map(s => { return {
-        name: `${s.quarter} - ${s.year}`,
-        quantity: parseInt(s.quantity),
-        car: `${s.car.manufacturer} - ${s.car.model}`
-      }
-    });
+	let uniqueCars = [];
 
-	return [...new Set(mapped.map(s => s.car))]
+	sales.forEach(s => {
+		Object.entries(s).forEach(([key, value]) => {
+			if (key !== 'time')
+				uniqueCars.push(key)
+		})
+	})
+
+	return [...new Set(uniqueCars)];
 }
-
 
 export function getChargingCurves (data) {
 	let temp = [];
@@ -69,4 +70,35 @@ export function getChargingCurves (data) {
 	return curveData;
 }
 
-export const chartColors = ['#5A4DAA', '#53ABFF', '#71DEC0', '#FFBF54', '#F7729A', '#907EFF', '#F8A0FF', '#00B582', '#FFE95F', '#BD8D78']
+export const chartColors = [
+	'#5A4DAA',
+	'#53ABFF',
+	'#71DEC0',
+	'#FFBF54',
+	'#F7729A',
+	'#907EFF',
+	'#F8A0FF',
+	'#00B582',
+	'#FFE95F',
+	'#BD8D78',
+	'#A6A0CE',
+	'#A9D4FF',
+	'#B8EEDF',
+	'#FFDFA9',
+	'#FBB8CC',
+	'#DED9FF',
+	'#FBCFFF',
+	'#7FDAC0',
+	'#D2F0B8',
+	'#DEC6BB',
+	'#3B3270',
+	'#458ED4',
+	'#5DB89F',
+	'#D49E45',
+	'#CD5E80',
+	'#6757D4',
+	'#CE85D4',
+	'#00966C',
+	'#88BA5E',
+	'#9B7462'
+];
