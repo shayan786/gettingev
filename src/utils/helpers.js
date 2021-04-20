@@ -70,6 +70,33 @@ export function getChargingCurves (data) {
 	return curveData;
 }
 
+export function getChargingCurve (car, data) {
+	let temp = [];
+	let curveData = [];
+
+	if (data.length > 0) {
+		data.forEach(d => {
+			d.data.points.forEach(p => {
+				temp.push({
+					car: `${car.manufacturer}_${car.model}_${car.trim}`,
+					[`${car.manufacturer}_${car.model}_${car.trim}`]: p.kw,
+					soc: p.soc
+				})
+			})
+		});
+
+		data[0].data.points.forEach(d => {
+			let filter = [];
+			temp.filter(t => d.soc === t.soc).forEach(t => {
+				filter.push(t)
+			})
+			curveData.push(Object.assign({}, ...filter))
+		})
+	}
+
+	return curveData;
+}
+
 export const chartColors = [
 	'#5A4DAA',
 	'#53ABFF',
