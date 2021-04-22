@@ -13,8 +13,8 @@ import Divider from '@material-ui/core/Divider';
 import Tooltip from '@material-ui/core/Tooltip';
 import Image from 'material-ui-image';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as ReTooltip, Legend, Label, ResponsiveContainer } from 'recharts';
-import { getChargingCurves, chartColors} from '../../utils/helpers.js';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as ReTooltip, Label, ResponsiveContainer } from 'recharts';
+import { chartColors, getChargingCurve} from '../../utils/helpers.js';
 const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD'
@@ -49,9 +49,10 @@ class DetailsPanel extends Component {
 
 	_renderCarousel (car) {
     const imageStyle = {
-      objectFit: 'contain'
+      objectFit: 'contain',
     };
     const containerStyles = {
+      paddingTop: 'calc(40%)'
     };
 
 		return (
@@ -69,40 +70,46 @@ class DetailsPanel extends Component {
 	}
 
   _renderChargingCurve (car, curve) {
-    const data = getChargingCurves([curve]);
-    console.log(data)
+    const data = getChargingCurve(car, [curve]);
 
     return (
-      <ResponsiveContainer width={"100%"} height={300}>
-        <LineChart
-          margin={{ top: 30, right: 30, left: 30, bottom: 30 }}
-          data={data} >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="soc">
-            <Label
-              value="SOC (%)"
-              position="bottom"
-              style={{ textAnchor: "middle" }} />
-          </XAxis>
-          <YAxis>
-            <Label
-              value="KW"
-              position="left"
-              angle={-90}
-              style={{ textAnchor: "middle" }}
-            />
-          </YAxis>
-          <ReTooltip />
-          <Line
-            dataKey={`${car.manufacturer}_${car.model}_${car.trim}`}
-            name={`${car.manufacturer} - ${car.model} (${car.trim})`}
-            type="monotone"
-            stroke={chartColors[0]}
-            strokeWidth={2}
-            activeDot={{ r: 8 }} />
-          }
-        </LineChart>
-      </ResponsiveContainer>
+      <List 
+        subheader={
+          <ListSubheader disableSticky={true}>
+            Charging Curve
+          </ListSubheader>}
+        >
+        <ResponsiveContainer width={"100%"} height={300}>
+          <LineChart
+            margin={{ top: 30, right: 30, left: 30, bottom: 30 }}
+            data={data} >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="soc">
+              <Label
+                value="SOC (%)"
+                position="bottom"
+                style={{ textAnchor: "middle" }} />
+            </XAxis>
+            <YAxis>
+              <Label
+                value="KW"
+                position="left"
+                angle={-90}
+                style={{ textAnchor: "middle" }}
+              />
+            </YAxis>
+            <ReTooltip />
+            <Line
+              dataKey={`${car.manufacturer}_${car.model}_${car.trim}`}
+              name={`${car.manufacturer} - ${car.model} (${car.trim})`}
+              type="monotone"
+              stroke={chartColors[0]}
+              strokeWidth={2}
+              activeDot={{ r: 8 }} />
+            }
+          </LineChart>
+        </ResponsiveContainer>
+      </List>
     )
   }
 
