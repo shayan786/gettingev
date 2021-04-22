@@ -33,11 +33,18 @@ class SalesPage extends Component {
   }
 
   _renderSales (sales, loading) {
+    const countries = ['US', 'UK', 'SE'];
+
     return sales.length > 0 ? (
       <div>
-        { this._renderCountrySales(sales.find(s => s.country === 'US').data.sales, 'US', loading) }
-        <Divider className={s.divider} />
-        { this._renderCountrySales(sales.find(s => s.country === 'UK').data.sales, 'UK', loading) }
+        {
+          countries.map((c, index) =>
+            <div>
+              { this._renderCountrySales(sales.find(s => s.country === c).data.sales, c, loading) }
+              { ((countries.length - 1) !== index) && <Divider className={s.divider} /> }
+            </div>
+          )
+        }
       </div>
     ) : null
   }

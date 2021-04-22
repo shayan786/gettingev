@@ -4,6 +4,8 @@
 @value spacing-1x, spacing-2x, spacing-3x, spacing-4x, spacing-5x, spacing-6x from spacing;
 
 .container {
+	max-height: 100%;
+	overflow-y: auto;
 }
 
 .header {
