@@ -54,7 +54,7 @@ class SalesPage extends Component {
 
     return sales.length > 0 ? (
       <div>
-        <h4>{`${country} Quarterly Sales`} </h4>
+        <h4>{`${country} Sales`} </h4>
         <ResponsiveContainer width={"100%"} height={300}>
           <BarChart
             data={sales} >
