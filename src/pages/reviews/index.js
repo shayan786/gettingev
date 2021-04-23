@@ -144,6 +144,18 @@ class ReviewsPage extends Component {
     )
   }
 
+  _handleRowClick(review) {
+    const { history } = this.props;
+    
+    if (review.content_type === "video") {
+      this.setState({ showDetailsDialog: true, selectedRowData: review }); 
+      history.push(`/reviews/${review.id}`)
+    }
+    else {
+      window.open(review.url)
+    }
+  }
+
   _renderTableBody(reviews, loading) {
     const { history } = this.props;
 
@@ -168,7 +180,7 @@ class ReviewsPage extends Component {
               }
             ]}
             data={reviews}
-            onRowClick={(e, rowData) => { this.setState({ showDetailsDialog: true, selectedRowData: rowData }); history.push(`/reviews/${rowData.id}`)} }
+            onRowClick={(e, rowData) => { this._handleRowClick(rowData) }}
             options={
               {
                 filtering: false,
